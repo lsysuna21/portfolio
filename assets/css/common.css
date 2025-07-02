@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html{
+  font-family: 'Pretendard', sans-serif;
+  color: #fff;
+}
+
+.btn{
+  display: inline-block;
+  padding: 14px 32px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 30px;
+  transition: 0.3s;
+}
+.btn:hover{
+  background: #c9c9c9;
+}

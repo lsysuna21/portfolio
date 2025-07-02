@@ -3,11 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SeoyeonLee Portfolio</title>
-  <!-- 파비콘 넣거라. -->
   <link rel="shortcut icon" href="asset/img/intro/favicon.png">
+  <title>SeoyeonLee Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.36/dist/fullpage.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   
+  <div id="fullpage">
+    <div class="section bg01">
+      
+    </div>
+  
+    <div class="section bg02">
+      
+    </div>
+  
+    <div class="section bg03">
+      
+    </div>
+
+    <div class="section bg04">
+      
+    </div>
+  </div>
+
+
+  <!-- Script Source -->
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="js/index.js"></script>
+
+  <!-- 풀페이지 -->
+  <script src="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.36/dist/fullpage.min.js"></script>
+  <script>
+    new fullpage('#fullpage',{
+      autoScrolling: true,
+      navigation: true,
+      /* 네비게이션 이름 지정 */
+      anchors: ['home','about','portfolio','contact'],
+      navigationTooltips: ['home','about','portfolio','contact'],
+      showActiveTooltip: true, /* 항상 네비 이름 뜨게 */
+    });
+  </script>
 </body>
 </html>
