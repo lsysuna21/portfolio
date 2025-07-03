@@ -1,13 +1,28 @@
+/* ICON FONT ______________________________*/
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+/* font-family: 'Material Symbols Outlined'; */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+/* font-family: fontawesome; */
+@import url('https://cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css');
+/* font-family: xeicon; */
+
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+html{
+	font-size: 62.5%; 
+  /* rem변환 10단위 */
+}
 body, html{
   font-family: 'Pretendard', sans-serif;
   scroll-behavior: smooth;
   background-color: #FAF9F6;
+  word-break: keep-all;
 }
+
 
 
 /* ------------풀페이지------------ */
@@ -21,8 +36,8 @@ body, html{
 }
 /* 네비게이션 점 */
 #fp-nav ul li a span {
-  width: 17px;
-  height: 17px;
+  width: 13px;
+  height: 13px;
   background: #d9d9d9;
   margin-left: 0;
   top: auto !important;
@@ -34,8 +49,8 @@ body, html{
 }
 #fp-nav ul li a.active {
   background: #0D2B98 !important;
-  width: 17px;
-  height: 17px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
 }
 #fp-nav {
@@ -72,11 +87,21 @@ body, html{
   padding: 40px;
 }
 
-
-.home{
+#goToCover{
   position: absolute;
   top: 40px;
   left: 50px;
+}
+.top{
+  color: white;
+  text-align: center;
+  padding: 2px;
+  background-color: #0D2B98;
+  font-size: 60px;
+  width: 80px;
+  height: 80px;
+  z-index: 9999;
+  border-radius: 50%;
 }
 
 .percent{

@@ -1,0 +1,32 @@
+.section.bg08{
+  background: linear-gradient(180deg, var(--White, #FFF) 0%, #C8FFFB 100%);
+}
+
+#Thankyou .portfolio-bg-img {
+  position: absolute;
+  z-index: 0;
+  width:100%;
+  height: auto; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 1s forwards;
+}
+#Thankyou h2, #Thankyou p{
+  position: relative;
+  z-index: 5;
+}
+#Thankyou h2{
+  font-size: 48px;
+  font-weight: 700;
+  color: #0D2B98;
+}
+#Thankyou p{
+  color: #0D2B98;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

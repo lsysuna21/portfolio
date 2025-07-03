@@ -1,4 +1,13 @@
 @import url(reset.css);
 @import url(font.css);
 @import url(common.css);
-@import url(index.css);
+
+
+@import url(cover.css);
+@import url(profile.css);
+@import url(publishing.css);
+@import url(UXUI.css);
+@import url(graphic.css);
+@import url(3D.css);
+@import url(ETC.css);
+@import url(thx.css);

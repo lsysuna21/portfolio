@@ -11,27 +11,59 @@
 <body>
   
   <div id="fullpage">
-    <div id="cover" class="section bg01" >
-      
-    </div>
-  
-    <div class="section bg02">
-      
-    </div>
-  
-    <div class="section bg03">
-      
-    </div>
+    <section id="cover" class="section bg01" >
+      <div class="intro-container">
+        <img src="assets/img/intro/portfolio.svg" alt="Portfolio Background" class="portfolio-bg-img">
 
-    <div class="section bg04">
-      
-    </div>
-    <div class="section bg05">
-      
-    </div>
-    <div class="section bg06">
-      
-    </div>
+        <img src="assets/img/intro/logo.svg" alt="S Apple Drawing" class="drawing-animation-img">
+
+        <div class="intro-text-container">
+          <p class="intro-line line1">성장하고, <br>배움을 탐구하는</p>
+          <p class="intro-line line2">Web Publisher</p>
+          <div class="intro-text-bt">
+            <p class="intro-line line3">Lee Seoyeon</p>
+            <h1 class="intro-line line4">Portfolio</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="profile" class="section bg02">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+  
+    <section id="publishing" class="section bg03">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+
+    <section id="UXUI" class="section bg04">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+
+    <section id="graphic" class="section bg05">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+
+    <section id="3D" class="section bg06">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+
+    <section id="ETC" class="section bg07">
+      <a href="#cover" id="goToCover"><img src="assets/img/intro/logo.png" alt="gotocover"></a>
+
+    </section>
+
+    <section id="Thankyou" class="section bg08">
+      <img src="assets/img/intro/portfolio.svg" alt="Portfolio Background" class="portfolio-bg-img">
+      <h2>ThankYou<br>For Watching!</h2>
+      <p>위 작업물들은 상업적 목적이 아닌 개인 포트폴리오용으로 제작되었습니다.<br>Design by Seoyeon Lee</p>
+    </section>
+
   </div>
 
 
@@ -47,12 +79,24 @@
       autoScrolling: true,
       navigation: true,
       /* 네비게이션 이름 지정 */
-      anchors: ['Cover','Profile','Publishing','UXUI','Graphic','ETC'],
-      navigationTooltips: ['Cover','Profile','Publishing','UXUI','Graphic','ETC'],
+      anchors: ['Cover','Profile','Publishing','UXUI','Graphic','3D','ETC','Thankyou'],
+      navigationTooltips: ['Cover','Profile','Publishing','UXUI','Graphic','3D','ETC','Thankyou'],
       showActiveTooltip: true, /* 항상 네비 이름 뜨게 */
       navigationPosition: 'left', /* 네비게이션을 왼쪽에 배치 */
-
-      
+    });
+    /* 로고클릭시 커버이동 */
+    document.addEventListener('DOMContentLoaded', function() {
+      var goToCoverLink = document.getElementById('goToCover');
+      if (goToCoverLink) {
+        goToCoverLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (typeof fullpage_api !== 'undefined') {
+            fullpage_api.moveTo('Cover');
+          } else {
+              console.warn("fullpage_api is not defined. Cannot moveto section.");
+            }
+          });
+      }
     });
   </script>
 </body>
