@@ -1,37 +1,17 @@
-
-
-.section{
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  text-align: center;
-  flex-direction: column;
-  padding: 40px;
-}
-
-
-
 .section.bg01{
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(180deg, var(--White, #FFF) 0%, #C8FFFB 100%);
 }
 .section.bg02{
-  background: #2c3e50;
+  background: #b1d1d1;
 }
 .section.bg03{
-  background: #1abc9c;
+  background: #8bbbb1;
 }
 .section.bg04{
-  background: #34495e;
+  background: #ffffff;
 }
 
 
 
 
-#fp-nav ul li a span{
-  background: #fff;
-}
-
-.fp-watermark a{
-  display: none;
-}
 

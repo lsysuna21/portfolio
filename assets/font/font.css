@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  src: url(pre/Pretendard-Black.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  src: url(pre/Pretendard-ExtraBold.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  src: url(pre/Pretendard-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  src: url(pre/Pretendard-SemiBold.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  src: url(pre/Pretendard-Medium.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  src: url(pre/Pretendard-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  src: url(pre/Pretendard-Light.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  src: url(pre/Pretendard-ExtraLight.woff) format('woff');
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  src: url(pre/Pretendard-Thin.woff) format('woff');
+}
+
+
+/* ICON FONT ______________________________*/
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+/* font-family: 'Material Symbols Outlined'; */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+/* font-family: fontawesome; */
+
+@import url('https://cdn.jsdelivr.net/npm/@xpressengine/xeicon@2.3.3/xeicon.min.css');
+/* font-family: xeicon; */
+

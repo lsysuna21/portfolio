@@ -5,19 +5,95 @@
 }
 body, html{
   font-family: 'Pretendard', sans-serif;
-  color: #fff;
+  scroll-behavior: smooth;
+  background-color: #FAF9F6;
 }
 
+
+/* ------------풀페이지------------ */
+
+.fp-watermark a{
+  display: none;
+}
+
+#fp-nav ul li {
+  margin-bottom: 35px;
+}
+/* 네비게이션 점 */
+#fp-nav ul li a span {
+  width: 17px;
+  height: 17px;
+  background: #d9d9d9;
+  margin-left: 0;
+  top: auto !important;
+  left: auto !important;
+  color: transparent;
+}
+#fp-nav ul li a.active span{
+  background: transparent;
+}
+#fp-nav ul li a.active {
+  background: #0D2B98 !important;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+#fp-nav {
+  left: 30px !important; 
+}
+/* 네비게이션 텍스트 */
+#fp-nav ul li .fp-tooltip {
+  color: #0D2B98; 
+  font-size: 20px;
+  right: auto;
+  width: auto; 
+  margin-left: 0; 
+  transform: translateX(15px);
+  white-space: nowrap; 
+}
+/* 활성화 텍스트 항상 보이도록 */
+#fp-nav ul li.active .fp-tooltip {
+  opacity: 1 !important;
+}
+/* 텍스트 마우스 오버 */
+#fp-nav ul li:hover .fp-tooltip {
+  opacity: 1 !important;
+}
+
+/* --------------------------- */
+
+
+.section{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 40px;
+}
+
+
+
+
 .btn{
+  width: 210px;
+  height: 55px;
   display: inline-block;
-  padding: 14px 32px;
-  background: #fff;
-  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+  color: #0D2B98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   text-decoration: none;
-  border-radius: 8px;
-  margin-top: 30px;
+  border: 2px solid #0D2B98;
+  border-radius: 60px;
   transition: 0.3s;
+  margin-bottom: 20px;
 }
 .btn:hover{
-  background: #c9c9c9;
+  background: #0D2B98;
+  color: white;
 }
+
