@@ -1,5 +1,5 @@
 @import url(reset.css);
-@import url(font.css);
+@import url(../font/font.css);
 @import url(common.css);
 
 

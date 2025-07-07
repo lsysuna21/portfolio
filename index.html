@@ -6,6 +6,7 @@
   <link rel="shortcut icon" href="asset/img/intro/favicon.png">
   <title>SeoyeonLee Portfolio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.36/dist/fullpage.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -28,65 +29,99 @@
     </section>
   
     <section id="profile" class="section bg02">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
-      <div class="pro-info">
-        <div class="name">
-          <h2>이서연</h2> <p>Lee Seoyeon</p>
+      <div class="swiper profile-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="pro-info">
+              <div class="name">
+                <h2>이서연</h2> <p>Lee Seoyeon</p>
+              </div>
+              <div class="birth">
+                <i class="fa-solid fa-cake-candles icon"></i>
+                <p>1999.12.21</p>
+              </div>
+              <div class="phone">
+                <i class="fa-solid fa-phone icon"></i>
+                <p>010.2652.7985</p>
+              </div>
+              <div class="mail">
+                <i class="fa-solid fa-envelope icon"></i>
+                <p>lsysuna21@naver.com</p>
+              </div>
+            </div>
+            <div class="education">
+              <h3>EDUCATION</h3>
+              <div class="e">
+                <h4>2025.07</h4>
+                <p>이젠아카데미 UXUI디자인&웹기획 프론트엔드 부트캠프(960H) 수료</p>
+              </div>
+              <div class="e">
+                <h4>2025.02</h4>
+                <p>동서울대학교 산업디자인학과 학사학위 졸업</p>
+              </div>
+              <div class="e">
+                <h4>2023.02</h4>
+                <p>동서울대학교 산업디자인과 전문학사 졸업</p>
+              </div>
+              <div class="e">
+                <h4>2020.03</h4>
+                <p>동경국제대학부속 일본어학교 졸업</p>
+              </div>
+              <div class="e">
+                <h4>2018.02</h4>
+                <p>휘경여자고등학교 졸업</p>
+              </div>
+            </div>
+            <div class="subskill">
+              <h3>subskill</h3>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            프로필 슬라이드 2
+          </div>
+          <div class="swiper-slide mobile">
+            모바일용
+          </div>
         </div>
-        <div class="birth">
-          <i class="fa-solid fa-cake-candles icon"></i>
-          <p>1999.12.21</p>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
         </div>
-        <div class="phone">
-          <i class="fa-solid fa-phone icon"></i>
-          <p>010.2652.7985</p>
-        </div>
-        <div class="mail">
-          <i class="fa-solid fa-envelope icon"></i>
-          <p>lsysuna21@naver.com</p>
-        </div>
-      </div>
-      <div class="education">
-        <h3>EDUCATION</h3>
-        <div class="e1">
-          <h4>2025.07</h4>
-          <p>이젠아카데미 UXUI디자인&웹기획 프론트엔드 부트캠프(960H) 수료</p>
-        </div>
-      </div>
+      
     </section>
   
     <section id="publishing" class="section bg03">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
 
     </section>
 
     <section id="UXUI" class="section bg04">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
 
     </section>
 
     <section id="graphic" class="section bg05">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
 
     </section>
 
     <section id="3D" class="section bg06">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
 
     </section>
 
     <section id="ETC" class="section bg07">
-      <a href="#cover" id="goToCover">
+      <a href="#cover" class="goToCover">
         <img src="assets/img/intro/logo.png" alt="gotocover">
       </a>
 
@@ -102,36 +137,67 @@
 
 
   <!-- Script Source -->
-  <script src="js/jquery-3.7.1.min.js"></script>
-  <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-  <script src="js/index.js"></script>
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/jquery-migrate-1.4.1.min.js"></script>
+  <script src="/assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="/assets/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <!-- 풀페이지 -->
   <script src="https://cdn.jsdelivr.net/npm/fullpage.js@4.0.36/dist/fullpage.min.js"></script>
   <script>
     new fullpage('#fullpage',{
+      licenseKey: 'gplv3-license', 
       autoScrolling: true,
       navigation: true,
       /* 네비게이션 이름 지정 */
-      anchors: ['Cover','Profile','Publishing','UXUI','Graphic','3D','ETC','Thankyou'],
+      anchors: ['Cover-page','Profile-page','Publishing-page','UXUI-page','Graphic-page','3D-page','ETC-page','Thankyou-page'],
       navigationTooltips: ['Cover','Profile','Publishing','UXUI','Graphic','3D','ETC','Thankyou'],
       showActiveTooltip: true, /* 항상 네비 이름 뜨게 */
       navigationPosition: 'left', /* 네비게이션을 왼쪽에 배치 */
+      scrollOverflow: false, // 스크롤 오버플로우는 끄기
     });
+
     /* 로고클릭시 커버이동 */
-    document.addEventListener('DOMContentLoaded', function() {
-      var goToCoverLink = document.getElementById('goToCover');
-      if (goToCoverLink) {
-        goToCoverLink.addEventListener('click', function(e) {
-          e.preventDefault();
-          if (typeof fullpage_api !== 'undefined') {
-            fullpage_api.moveTo('Cover');
+    document.querySelectorAll('.goToCover').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+        e.preventDefault(); // a 태그의 기본 동작 방지
+        fullpage_api.moveTo('Cover'); // FullPage API로 첫 페이지   이동
+      });
+    })
+
+    // Swiper 초기화
+    const swiper = new Swiper('.profile-swiper', {
+      direction: 'horizontal',
+      loop: false,
+      touchStartPreventDefault: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        slideChange: function () {
+          const { activeIndex, slides } = this;
+          const totalSlides = slides.length;
+
+          // prev 버튼: 첫 슬라이드에선 숨김, 그 외는 표시
+          if (activeIndex === 0) {
+            document.querySelector('.swiper-button-prev').style.display = 'none';
           } else {
-              console.warn("fullpage_api is not defined. Cannot moveto section.");
-            }
-          });
-      }
+            document.querySelector('.swiper-button-prev').style.display = 'block';
+          }
+
+          // next 버튼: 마지막 슬라이드에선 숨김, 그 외는 표시
+          if (activeIndex === totalSlides - 1) {
+            document.querySelector('.swiper-button-next').style.display = 'none';
+          } else {
+            document.querySelector('.swiper-button-next').style.display = 'block';
+          }
+        },
+      },
     });
+    swiper.emit('slideChange');
+
   </script>
   
 </body>
