@@ -25,17 +25,24 @@
 /* ---------------- */
 
 #profile .swiper-wrapper{
-  padding: 15rem 0rem 0rem 15rem;
+  padding: 12rem 0rem 5rem 20rem;
 }
-.swiper-slide{
-  border: 1px solid #000;
-}
+
 #profile .pro-info{
   text-align: left;
   margin-bottom: 5rem;
 }
 #profile .name {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+#profile .birth,
+#profile .phone,
+#profile .mail{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 #profile .name h2{
   display: inline;
@@ -44,12 +51,10 @@
   margin-right: 15px;
 }
 #profile .name p{
-  display: inline;
   font-size: 2.5rem;
   font-weight: 200;
 }
 #profile p{
-  display: inline;
   font-size: 2rem;
   font-weight: 200;
 }
@@ -57,22 +62,29 @@
   margin-left: 0.7rem;
   margin-right: 2rem;
 }
+
+/* 교육정보 */
 #profile .education{
   text-align: left;
+  margin-bottom: 5rem;
+}
+#profile .education .e{
+  display: flex;
 }
 #profile h3{
+  display: inline-block;  
   font-size: 2.4rem;
-  text-transform: ;
-  position: relative;
-  margin-bottom: 1rem;
+  text-transform:uppercase;  position: relative;
+  margin-bottom: 3rem;
   padding: 0 1rem;
+  text-align: left;
 }
 #profile h3:before{
   content: '';
   position: absolute;
   bottom: 5px;
   left: 0;
-  width: 16rem;
+  width: 100%;
   height: 1rem;
   background-color: #9CD8F6;
   z-index: -1;
@@ -85,8 +97,144 @@
   margin-right: 1rem;
 }
 #profile .education .e{
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
-#profile .education{
-  margin-bottom: 5rem;
+
+/* 서브스킬 */
+#profile .subskill{
+  text-align: left;
+}
+#profile .subskill .s1{
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+#profile .subskill .s1 img, 
+#profile .subskill .s2 img{
+  margin-right: 10rem;
+  width: 6rem;
+}
+#profile .subskill .s1 img:nth-child(3){
+  margin-left: -0.7rem;
+}
+#profile .subskill .s1 img:last-child{
+  width: 5rem;
+}
+#profile .subskill .s2 img:nth-child(2){
+  width: 5rem;
+}
+#profile .subskill .s2 img:last-child{
+  width: 5.5rem;
+}
+
+
+.profile-content{
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* 스킬 */
+.skill{
+  text-align: left;
+}
+
+.skills-container{
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+}
+.skill-item {
+  margin-bottom: 4rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.skill-item:last-child {
+  margin-bottom: 0;
+}
+.skill-item p{
+  display: block;
+  margin-right: 3rem;
+}
+.progress-bar {
+  width: 30rem;
+  height: 1rem;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  background-color: #0D2B98;
+  width: 0;
+  animation: fillProgress 2s ease-in-out forwards;
+  overflow: hidden;
+}
+@keyframes fillProgress {
+  0% { width: 0; }
+  100% { width: var(--target-width); }
+}
+
+/* 개별 스킬 레벨 설정 */
+.photoshop .progress-fill { --target-width: 95%; animation-delay: 0.1s; }
+.illustrator .progress-fill { --target-width: 95%; animation-delay: 0.2s; }
+.adobe-xd .progress-fill { --target-width: 90%; animation-delay: 0.3s; }
+.figma .progress-fill { --target-width: 90%; animation-delay: 0.4s; }
+.html .progress-fill { --target-width: 90%; animation-delay: 0.5s; }
+.css .progress-fill { --target-width: 85%; animation-delay: 0.6s; }
+.jquery .progress-fill { --target-width: 70%; animation-delay: 0.7s; }
+.javascript .progress-fill { --target-width: 70%; animation-delay: 0.8s; }
+.github .progress-fill { --target-width: 85%; animation-delay: 0.9s; }
+
+
+
+
+/* 왼쪽 컬럼은 내정보-교육-스킬-서브스킬 모두 포함 */
+.profile-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* -----pc----- */
+@media screen and (min-width: 1025px) {
+  .profile-left {
+    flex-direction: column;
+    position: relative;
+  }
+  .profile-left .skill {
+    position: absolute;
+    top: 6rem;
+    right: 33vw;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1600px) {
+  .profile-left .skill {
+    right: max(45vw);
+  }
+}
+
+
+/* -----Tablet----- */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .profile-content {
+    flex-direction: column;
+  }
+  .skills-container {
+    padding: 20px;
+  }
+  
+  .skill-name {
+    font-size: 14px;
+  }
+  
+}
+
+/* -----Mobile----- */
+@media screen and (max-width: 768px) {
+  
 }
