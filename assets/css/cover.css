@@ -68,18 +68,50 @@
   font-size: 4rem;
   font-weight: 200;
 }
-.intro-line.line3,
-.intro-line.line4{
+.intro-text-bt{
   text-shadow: 0px 0px 10px rgba(0, 13, 69, 0.50);
   font-size: 80px;
   font-weight: 500;
   color: white;
+  position: absolute;
+  top: 50rem;
 }
 .intro-line.line2{
   position: absolute;
   top: 43rem;
 }
-.intro-text-bt{
-  position: absolute;
-  top: 50rem;
+
+
+
+
+
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .drawing-animation-img {
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .intro-text-container{
+    top: 55%;
+    transform: translateY(-50%);
+    left: 13%;
+    width: 55rem;
+  }
+  .intro-line.line1::after{
+    height: 20rem;
+    top: 16rem;
+  }
+  .intro-line.line1,
+  .intro-line.line2{
+    font-size: 3rem;
+  }
+  .intro-text-bt{
+    font-size: 5rem;
+    top: 50rem;
+  }
+
 }

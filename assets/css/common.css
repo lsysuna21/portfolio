@@ -30,32 +30,37 @@ body, html{
 .fp-watermark a{
   display: none;
 }
-
+#fp-nav {
+  left: 1.3rem !important; 
+}
 #fp-nav ul li {
   margin-bottom: 35px;
 }
 /* 네비게이션 점 */
+#fp-nav ul li a{
+  transition: 0.3s;
+}
 #fp-nav ul li a span {
-  width: 13px;
-  height: 13px;
+  width: 1rem;
+  height: 1rem;
   background: #d9d9d9;
   margin-left: 0;
   top: auto !important;
   left: auto !important;
   color: transparent;
+  border-radius: 0;
 }
 #fp-nav ul li a.active span{
   background: transparent;
+  opacity: 0;
 }
 #fp-nav ul li a.active {
   background: #0D2B98 !important;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: rotate(45deg);
 }
-#fp-nav {
-  left: 30px !important; 
-}
+
 /* 네비게이션 텍스트 */
 #fp-nav ul li .fp-tooltip {
   color: #0D2B98; 
@@ -63,7 +68,7 @@ body, html{
   right: auto;
   width: auto; 
   margin-left: 0; 
-  transform: translateX(15px);
+  transform: translateX(0.7rem) translateY(-0.3rem);
   white-space: nowrap; 
 }
 /* 활성화 텍스트 항상 보이도록 */
@@ -77,7 +82,6 @@ body, html{
 
 /* --------------------------- */
 
-
 .section{
   display: flex;
   align-items: center;
@@ -89,39 +93,56 @@ body, html{
 
 #goToCover{
   position: absolute;
-  top: 40px;
-  left: 50px;
+  top: 3rem;
+  left: 3rem;
 }
+#goToCover img{
+  width: 80%;
+  height: 80%;
+}
+
 .top{
-  color: white;
-  text-align: center;
-  padding: 2px;
   background-color: #0D2B98;
-  font-size: 60px;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   z-index: 9999;
   border-radius: 50%;
+  position: relative;
+}
+.top i{
+  color: white;
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.top:hover{
+  background-color: white;
+  border: 2px solid #0D2B98;
+}
+.top:hover i{
+  color: #0D2B98;
 }
 
 .percent{
   display: inline-block;
   text-align: center;
   color: #4B72FF;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 1.7rem;
+  font-weight: 500;
   border: 1px solid #4B72FF;
   border-radius: 50px;
-  padding: 5px 20px;
+  padding: 5px 15px;
   justify-content: center;
   align-items: center;
 }
 
 .btn{
-  width: 200px;
-  height: 60px;
+  width: 20rem;
+  height: 5rem;
   display: inline-block;
-  font-size: 25px;
+  font-size: 2.5rem;
   font-weight: 600;
   color: #0D2B98;
   display: flex;
@@ -139,3 +160,94 @@ body, html{
   color: white;
 }
 
+.icon{
+  color: #4B72FF;
+  font-size: 2rem;
+}
+
+/* -----애니메이션----- */
+/* y축 이동 */
+.ani.y_Bottom{
+  opacity: 0;
+  transform:translateY(40px);
+}
+.ani.y_Bottom.moving{
+  opacity: 1;
+  transform:translateY(0px);
+  transition: 1s;
+}
+/* x축 이동 */
+/* left */
+.ani.x_Left {
+	opacity: 0;
+	transform: translateX(-40px);
+}
+.ani.x_Left.moving {
+	opacity: 1;
+	transform: translateX(0);
+  transition: 1s;
+}
+/* rigtht */
+.ani.x_Right {
+	opacity: 0;
+	transform: translateX(40px);
+}
+.ani.x_Right.moving {
+	opacity: 1;
+	transform: translateX(0);
+  transition: 1s;
+}
+
+
+
+
+/* Tablet & Mobile 공통 - 인디케이터 점 줄이기 & 텍스트 숨기기 */
+@media screen and (max-width: 1200px) {
+  #fp-nav {
+    left: 1rem !important; 
+  }
+  #fp-nav ul li {
+    margin-bottom: 2rem;
+  }
+  /* 점 크기 줄이기 */
+  #fp-nav ul li a span,
+  #fp-nav ul li a.active span,
+  #fp-nav ul li a.active {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  /* 글자 숨기기 */
+  #fp-nav ul li .fp-tooltip {
+    display: none !important;
+  }
+}
+
+
+
+
+/* -----Tablet----- */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .btn{
+    width: 17.5rem;
+    height: 5rem;
+    font-size: 2rem;
+  }
+  .percent{
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+}
+
+/* -----Mobile----- */
+@media screen and (max-width: 768px) {
+  .btn{
+    width: 12.5rem;
+    height: 4rem;
+    font-size: 1.5rem;
+  }
+  .percent{
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
