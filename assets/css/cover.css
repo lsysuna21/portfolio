@@ -40,9 +40,9 @@
   align-items: center; 
   text-align: left;
   color: #0D2B98;
-  opacity: 1;
+  opacity: 0;
   z-index: 2;
-  /* animation: fadeIn 2s forwards 3s; */
+  animation: fadeIn 2s forwards 3s;
 }
 @keyframes fadeIn {
   from {
@@ -124,7 +124,6 @@
     color: #0D2B98;
     z-index: 2;
     text-align: center;
-    padding: 2rem 0;
   }
   
 

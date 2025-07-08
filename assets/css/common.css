@@ -286,7 +286,7 @@ body, html{
 
   .profile-swiper .swiper-slide {
     width: 100% !important;
-    margin-bottom: 40px; /* 여백 주기 */
+    margin-bottom: 40px; 
   }
 
   .swiper-button-next,

@@ -29,7 +29,7 @@
   padding: 10rem 0rem 0rem 25rem;
 }
 #profile .swiper-wrapper .profile2{
-  padding: 10rem 0rem 0rem 25rem;
+  padding: 10rem 0rem 0rem 15rem;
 }
 
 #profile .pro-info{
@@ -95,10 +95,13 @@
   transition: 0.5s;
 }
 #profile h4{
-  display: inline;
+  display: inline-block;
+  width: 110px;
   font-size: 2rem;
   font-weight: 200;
-  margin-right: 1rem;
+  padding: 0 1rem;
+  vertical-align: top;
+  box-sizing: border-box;
 }
 #profile .education .e{
   margin-bottom: 1.5rem;
@@ -148,7 +151,10 @@
 }
 .skill-item p{
   display: block;
-  margin-right: 3rem;
+}
+.skill-name{
+  display: inline-block;
+  width: 150px;
 }
 .progress-bar {
   width: 30rem;
@@ -186,7 +192,7 @@
 #profile .swiper-slide.profile2{
   display: flex;
 }
-#profile .swiper-slide .info2{
+#profile .swiper-slide.profile2 .info2{
   margin-top: 5rem;
   margin-right: 25rem;
   margin-left: 10rem;
@@ -231,7 +237,47 @@
 }
 
 
+/* -----맥북에어----- */
+@media screen and (min-width: 1201px) and (max-width: 1280px){
+  #profile .swiper-wrapper .profile1{
+    padding: 5rem 0rem 0rem 15rem;
+  }
+  #profile .swiper-wrapper .profile2{
+    padding: 5rem 0 0 3rem;
+  }
 
+  #profile .pro-info{
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  #profile h3{
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+  #profile .education{
+    margin-bottom: 1rem;
+    width: 530px;
+  }
+
+  #profile .profile-left .skill {
+    text-align: left;
+    position: absolute;
+    top: 2rem;
+    right: 12vw;
+  }
+  .progress-bar {
+    width: 17rem;
+    height: 0.7rem;
+  }
+
+  #profile .swiper-wrapper .profile2 .awards{
+    margin-top: 0rem;
+    position: absolute;
+    top: 13rem;
+    right: 10vw;
+  }
+
+} 
 
 /* -----Tablet----- */
 @media screen and (min-width: 769px) and (max-width: 1200px) {
@@ -242,7 +288,8 @@
     padding: 12rem 0rem 0rem 8rem;
   }
   #profile .swiper-wrapper .profile2{
-    padding: 12rem 0rem 0rem 12rem;
+    padding: 5rem 0rem 0rem 0rem;
+    margin: auto;
   }
   .profile-content {
     flex-direction: column;
@@ -325,6 +372,7 @@
   }
   #profile .swiper-slide .awards{
     margin-top: 0rem;
+    margin-left: 10rem;
   }
   #profile .swiper-slide .awards .e{
     margin-bottom: 2.5rem;
@@ -337,13 +385,13 @@
 @media screen and (max-width: 767px) {
 
   #profile .hover-img {
-    display: none !important;
+    display: none;
   }
   #profile .swiper-wrapper .profile1{
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0 2rem 0rem;
   }
   #profile .swiper-wrapper .profile2{
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0rem 2rem 0;
   }
   #profile .profile-swiper .swiper-wrapper {
     display: flex;
@@ -351,15 +399,10 @@
   }
   #profile .swiper-button-next,
   #profile .swiper-button-prev {
-    display: none !important;
+    display: none;
   }
 
-  #profile .swiper-wrapper .profile1{
-    padding: 1rem 10rem;
-  }
-  #profile .swiper-wrapper .profile2{
-    padding: 1rem 10rem;
-  }
+  
 
   #profile .profile-left {
     flex-direction: column;
@@ -368,30 +411,117 @@
     font-size: 3rem;
     font-weight: 500;
   }
-  #profile .pro-info .name p{
-    font-size: 2rem;
+  #profile .pro-info p{
+    font-size: 1.8rem;
+  }
+  #profile  h3{
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  #profile p{
+    font-size: 1.8rem;
+  }
+  #profile .pro-info{
+    margin: 4rem auto;
+  }
+  #profile .education{
+    margin-bottom: 4rem;
+  }
+  #profile .education .e{
+    margin-bottom: 1.4rem;
+    width: 100%;
   }
 
+  #profile .skill{
+    position: static;
+    margin-bottom: 3rem;
+  }
+  #profile .skill-item {
+    margin-bottom: 2rem;
+  }
+  .progress-bar {
+    width: 20rem;
+    height: 0.7rem;
+  }
 
-
-
+  #profile .subskill{
+    margin: 0 0 4rem;
+  }
+  #profile .subskill .subskill-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  /* #profile .subskill .s1{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 0.3rem;
+  } */
+  #profile .subskill .s1 img, 
+  #profile .subskill .s2 img{
+    margin-right: 2rem;
+    width: 5rem;
+  }
+  #profile .subskill .s1 img:last-child{
+    width: 4rem;
+  }
+  #profile .subskill .s2 img:nth-child(2){
+    width: 4rem;
+  }
+  #profile .subskill .s2 img:last-child{
+    width: 4.5rem;
+  }
 
   /* 프로필 두번째 풀페이지 장 */
   #profile .section.bg02,
   #profile .profile-swiper,
   #profile .profile2 {
-    overflow: visible ;
+    overflow: visible;
   }
   #profile .profile-swiper,
   #profile .swiper-wrapper {
-    display: block ;
+    display: block;
     width: 100%;
     height: auto;
   }
   #profile .swiper-slide {
     display: block !important;
-    width: 100%;
     height: auto ;
     position: relative;
   }
+
+  #profile .swiper-slide.profile2 .info2{
+    margin-top: 0rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+  }
+
+  #profile .swiper-slide .awards {
+    margin-top: 0rem;
+  }
+  .profile-swiper .swiper-slide {
+    margin-bottom: 0px; 
+  }
+
+  #profile .e {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #profile .e h4 {
+    width: 110px;
+    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 200;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  #profile .e p {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
 }
