@@ -179,15 +179,15 @@
 }
 
 /* 개별 스킬 레벨 설정 */
-.photoshop .progress-fill { --target-width: 95%; animation-delay: 0.1s; }
-.illustrator .progress-fill { --target-width: 95%; animation-delay: 0.2s; }
-.adobe-xd .progress-fill { --target-width: 90%; animation-delay: 0.3s; }
-.figma .progress-fill { --target-width: 90%; animation-delay: 0.4s; }
-.html .progress-fill { --target-width: 90%; animation-delay: 0.5s; }
-.css .progress-fill { --target-width: 85%; animation-delay: 0.6s; }
-.jquery .progress-fill { --target-width: 70%; animation-delay: 0.7s; }
-.javascript .progress-fill { --target-width: 70%; animation-delay: 0.8s; }
-.github .progress-fill { --target-width: 85%; animation-delay: 0.9s; }
+.photoshop .progress-fill { --target-width: 95%; animation-delay: 7s; }
+.illustrator .progress-fill { --target-width: 95%; animation-delay: 7.1s; }
+.adobe-xd .progress-fill { --target-width: 90%; animation-delay: 7.2s; }
+.figma .progress-fill { --target-width: 90%; animation-delay: 7.3s; }
+.html .progress-fill { --target-width: 90%; animation-delay: 7.4s; }
+.css .progress-fill { --target-width: 85%; animation-delay: 7.5s; }
+.jquery .progress-fill { --target-width: 70%; animation-delay: 7.6s; }
+.javascript .progress-fill { --target-width: 70%; animation-delay: 7.7s; }
+.github .progress-fill { --target-width: 85%; animation-delay: 7.8s; }
 
 #profile .swiper-slide.profile2{
   display: flex;
