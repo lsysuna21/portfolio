@@ -113,6 +113,7 @@ body, html{
   z-index: 9999;
   border-radius: 50%;
   position: relative;
+  display: none;
 }
 .top i{
   color: white;
@@ -122,13 +123,7 @@ body, html{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.top:hover{
-  background-color: white;
-  border: 2px solid #0D2B98;
-}
-.top:hover i{
-  color: #0D2B98;
-}
+
 
 .percent{
   display: inline-block;
@@ -226,6 +221,8 @@ body, html{
   #fp-nav ul li .fp-tooltip {
     display: none !important;
   }
+
+  
 }
 
 
@@ -242,6 +239,7 @@ body, html{
     font-size: 1.4rem;
     font-weight: 500;
   }
+
 }
 
 /* -----Mobile----- */
@@ -254,5 +252,45 @@ body, html{
   .percent{
     font-size: 1.2rem;
     font-weight: 500;
+  }
+
+  .goToCover{
+    display: none;
+  }
+  .top{
+    display: inline-block;
+    position: fixed;
+    bottom: 4rem;
+    right: 3.5rem;
+    z-index: 9999;
+  }
+
+  
+  /* fullpage 섹션 비활성화 처리 */
+  #fullpage {
+    display: block !important;
+  }
+
+  .section {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+
+  /* swiper 슬라이드 일렬 배치 */
+  .profile-swiper .swiper-wrapper {
+    display: block !important;
+    transform: none !important;
+  }
+
+  .profile-swiper .swiper-slide {
+    width: 100% !important;
+    margin-bottom: 40px; /* 여백 주기 */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
   }
 }

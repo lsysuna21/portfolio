@@ -239,18 +239,30 @@
     display: none !important;
   }
   #profile .swiper-wrapper .profile1{
-    padding: 13rem 0rem 0rem 10rem;
+    padding: 12rem 0rem 0rem 8rem;
   }
   #profile .swiper-wrapper .profile2{
-    padding: 13rem 0rem 0rem 25rem;
+    padding: 12rem 0rem 0rem 12rem;
   }
   .profile-content {
     flex-direction: column;
+  }
+  #profile .pro-info{
+    text-align: left;
+    margin-bottom: 3rem;
   }
   #profile h3{
     font-size: 2.4rem;
     margin-bottom: 2rem;
   }
+  #profile .education{
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+  #profile .education .e{
+    margin-bottom: 1rem;
+  }
+  
   .skills-container {
     padding: 2rem;
   }
@@ -267,18 +279,21 @@
 
   .profile-left .skill {
     position: absolute;
-    top: 50rem;
+    top: 42rem;
     left: 0;
+  }
+  .profile-left .skill .skills-container{
+    margin-top: -1rem;
   }
 
   #profile .subskill{
     position: absolute;
-    bottom: -65rem;
+    bottom: -58rem;
     left: 0;
   }
   #profile .subskill .subskill-wrap{
     display: flex;
-    margin-top: 2rem;
+    margin-top: 0rem;
   }
   #profile .subskill .s1{
     margin-top: 0rem;
@@ -286,14 +301,22 @@
   }
   #profile .subskill .s1 img, 
   #profile .subskill .s2 img{
-    margin-right: 5rem;
+    margin-right: 3rem;
+    width: 6rem;
   }
   #profile .subskill .s1 img:nth-child(3){
     margin-left: 0rem;
   }
+  #profile .subskill .s1 img:last-child{
+    width: 5rem;
+  }
+  #profile .subskill .s2 img:nth-child(2){
+    width: 5rem;
+  }
+  #profile .subskill .s2 img:last-child{
+    width: 5.5rem;
+  }
   
-
-
 
   #profile .swiper-slide .info2{
     margin-top: 0rem;
@@ -309,11 +332,66 @@
   
 }
 
-/* -----Mobile----- */
-@media screen and (max-width: 768px) {
 
-  .hover-img {
+/* -----Mobile----- */
+@media screen and (max-width: 767px) {
+
+  #profile .hover-img {
+    display: none !important;
+  }
+  #profile .swiper-wrapper .profile1{
+    padding: 0rem 0rem 0rem 0rem;
+  }
+  #profile .swiper-wrapper .profile2{
+    padding: 0rem 0rem 0rem 0rem;
+  }
+  #profile .profile-swiper .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  #profile .swiper-button-next,
+  #profile .swiper-button-prev {
     display: none !important;
   }
 
+  #profile .swiper-wrapper .profile1{
+    padding: 1rem 10rem;
+  }
+  #profile .swiper-wrapper .profile2{
+    padding: 1rem 10rem;
+  }
+
+  #profile .profile-left {
+    flex-direction: column;
+  }
+  #profile .pro-info .name h2{
+    font-size: 3rem;
+    font-weight: 500;
+  }
+  #profile .pro-info .name p{
+    font-size: 2rem;
+  }
+
+
+
+
+
+  /* 프로필 두번째 풀페이지 장 */
+  #profile .section.bg02,
+  #profile .profile-swiper,
+  #profile .profile2 {
+    overflow: visible ;
+  }
+  #profile .profile-swiper,
+  #profile .swiper-wrapper {
+    display: block ;
+    width: 100%;
+    height: auto;
+  }
+  #profile .swiper-slide {
+    display: block !important;
+    width: 100%;
+    height: auto ;
+    position: relative;
+  }
 }

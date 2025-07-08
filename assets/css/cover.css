@@ -1,10 +1,10 @@
 .section.bg01{
-  background: linear-gradient(180deg, var(--White, #FFF) 0%, #C8FFFB 100%);
+  background: linear-gradient(180deg, white 0%, #C8FFFB 100%);
 }
 
 .portfolio-bg-img {
   position: absolute;
-  width:100%;
+  width:100vw;
   height: auto; 
   top: 50%;
   left: 50%;
@@ -40,9 +40,9 @@
   align-items: center; 
   text-align: left;
   color: #0D2B98;
-  opacity: 0;
+  opacity: 1;
   z-index: 2;
-  animation: fadeIn 2s forwards 3s;
+  /* animation: fadeIn 2s forwards 3s; */
 }
 @keyframes fadeIn {
   from {
@@ -73,12 +73,10 @@
   font-size: 80px;
   font-weight: 500;
   color: white;
-  position: absolute;
-  top: 50rem;
+  margin-top: 2rem;
 }
 .intro-line.line2{
-  position: absolute;
-  top: 43rem;
+  margin-top: 33rem;
 }
 
 
@@ -88,30 +86,66 @@
 
 /* Mobile */
 @media screen and (max-width: 768px) {
-  .drawing-animation-img {
-    width: 30%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+  /* 뷰포트 꽉 차게 배경 */
+  .section.bg01 {
+    height: 100vh;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(180deg, #C8FFFB 0%, #FAF9F6 100%);
   }
 
-  .intro-text-container{
-    top: 55%;
-    transform: translateY(-50%);
-    left: 13%;
-    width: 55rem;
+  
+  /* 배경 이미지 */
+  .intro-svg{
+    position: relative;
+    top: 35rem;
+    left: 0;
   }
-  .intro-line.line1::after{
-    height: 20rem;
-    top: 16rem;
+  /* 애니메이션 이미지 */
+  .drawing-animation-img {
+    width: 25%;
+    max-width: 120px;
+    position: absolute;
+    margin: 0 auto 1rem auto;
+    z-index: 1;
   }
+
+  /* 텍스트 컨테이너 */
+  .intro-text-container {
+    position: relative;
+    top: 38rem;
+    left: -0.3rem;
+    max-width: 350px;
+    margin: 0 auto;
+    color: #0D2B98;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+
+  
+
+  .intro-line.line1::after {
+    display: none;
+  }
+  .intro-line.line2{
+    margin-top: 2rem;
+  }
+  
   .intro-line.line1,
   .intro-line.line2{
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .intro-text-bt{
-    font-size: 5rem;
-    top: 50rem;
+    font-size: 3.5rem;
+    margin-top: 40rem;
   }
+  
+  
 
 }
