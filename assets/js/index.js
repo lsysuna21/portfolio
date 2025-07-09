@@ -123,7 +123,6 @@ document.querySelectorAll('.thumb-list li').forEach((li, index) => {
 });
 
 
-
 function fadeOutIn(element, updateFn) {
   // 1단계: opacity 0
   element.classList.remove('show');
@@ -134,3 +133,32 @@ function fadeOutIn(element, updateFn) {
     element.classList.add('show');
   }, 300); // transition 시간과 맞추기
 }
+
+
+/* 썸네일 갯수에 따라 좌우버튼 생기고 없어짐 */
+document.addEventListener('DOMContentLoaded', () => {
+  const thumbList = document.querySelector('.thumb-list');
+  const thumbItems = thumbList.querySelectorAll('li');
+  const prevBtn = document.querySelector('.nav-btn.prev');
+  const nextBtn = document.querySelector('.nav-btn.next');
+  const wrapper = document.querySelector('.thumb-wrapper');
+
+  const isMobile = window.matchMedia("(max-width: 1200px)").matches;
+  
+  if (isMobile) {
+    // 가로 스크롤 시 필요한 썸네일 개수 기준 (예: 화면에 3개까지 보일 수 있음)
+    const visibleCount = Math.floor(wrapper.offsetWidth / 150); // 썸네일 하나가 150px이라고 가정
+
+    if (thumbItems.length <= visibleCount) {
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+    } else {
+      prevBtn.style.display = 'block';
+      nextBtn.style.display = 'block';
+    }
+  } else {
+    // PC에서는 버튼 항상 표시
+    prevBtn.style.display = 'block';
+    nextBtn.style.display = 'block';
+  }
+});
