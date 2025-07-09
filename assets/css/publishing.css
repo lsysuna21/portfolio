@@ -1,3 +1,153 @@
-.section.bg03{
-  background: #ffe3c4 ;
+.publishing-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 15rem;
+}
+#publishing .project-info{
+  text-align: left;
+  margin-top: 8rem;
+  margin-right: 5rem;
+}
+#publishing .proinfo-left{
+  padding-left: 1rem;
+}
+#publishing .project-title{
+  font-size: 4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+#publishing .project-desc{
+  font-size: 2rem;
+  font-weight: 400;
+}
+#publishing .stack-icons{
+  margin: 2rem 0 7rem;
+}
+#publishing .stack-icons img{
+  margin-bottom: 1rem;
+}
+#publishing .stack-icons img{
+  margin-right: 1rem;
+}
+#publishing .pub-contents{
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 7rem;
+}
+#publishing .imac-mockup{
+  position: relative;
+}
+#publishing .imac-mockup img{
+  width: 1035px;
+  height: 870px;
+  margin-right: 5rem;
+}
+#publishing .imac-mockup video{
+  width: 940.362px;
+  height: 530.835px;
+  background: #000;
+  position: absolute;
+  top: 4.2rem;
+  left: 4.6rem;
+}
+
+#publishing .thumbnail-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: 67.5rem;
+  margin-top: 6rem;
+}
+#publishing .thumbnail-gallery .nav-btn{
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  color: #4B72FF;
+  display: none;
+}
+#publishing .thumbnail-gallery .nav-btn.prev{
+  margin-bottom: 1rem;
+}
+#publishing .thumbnail-gallery .nav-btn.next{
+  margin-top: 1rem;
+}
+#publishing .thumb-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 2rem;
+}
+#publishing .thumb-list .logo-wrap{
+  width: 150px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+#publishing .thumb-list .logo-wrap img{
+  max-width: 60%;
+}
+#publishing .thumb-list .logo-wrap:hover{
+  box-shadow: inset 5px 5px 5px rgba(0,0,0,0.2), inset -5px -5px 5px #fff;
+}
+
+
+
+
+/* -----맥북에어----- */
+@media screen and (min-width: 1201px) and (max-width: 1280px){
+
+  .publishing-container {
+    margin-left: 12rem;
+  }
+  #publishing .project-info{
+    margin-right: 1.5rem;
+    margin-top: 5.0rem;
+  }
+  #publishing .project-title{
+    font-size: 3rem;
+  }
+  #publishing .project-desc{
+    font-size: 1.7rem;
+  }
+  #publishing .imac-mockup img{
+    width: 750px;
+    height: 625px;
+    margin-top: 3rem;
+    margin-right: 0rem;
+  }
+  #publishing .imac-mockup video{
+    width: 679px;
+    height: 382px;
+    top: 6rem;
+    left: 3.5rem;
+  }
+  #publishing .thumbnail-gallery {
+    margin-top: 4rem;
+  }
+
+}
+
+/* -----Tablet----- */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+}
+
+/* -----Mobile----- */
+@media (max-width: 767px) {
+  .portfolio-container {
+    flex-direction: column;
+  }
+  .thumbnail-gallery {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .thumb-list {
+    flex-direction: row;
+    overflow-x: scroll;
+  }
 }

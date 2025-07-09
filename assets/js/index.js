@@ -20,3 +20,117 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+
+/* 퍼블리싱 썸네일 누르면 정보 바뀜 */
+// 각 프로젝트 정보 정의
+const projects = [
+  {
+    title: '배스킨라빈스',
+    desc: 'Main Page',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png'],
+    duration: '1weeks',
+    content: '메인페이지',
+    video: 'video/br.mp4',
+    showPlanning: false
+  },
+  {
+    title: '곰표',
+    desc: 'Main Page',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png', 'jquery-logo.png'],
+    duration: '2weeks',
+    content: '메인페이지',
+    video: 'video/gompyo.mp4',
+    showPlanning: true
+  },
+  {
+    title: '빌리아일리쉬',
+    desc: '전체 페이지',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png', 'html-logo.png','css-logo.png', 'jquery-logo.png'],
+    duration: '3weeks',
+    content: '12 Pages',
+    video: 'video/billie.mp4',
+    showPlanning: false
+  },
+  {
+    title: '아트허브',
+    desc: '반응형 전체페이지',
+    percent: 'Team 40%',
+    stack: ['figma-logo.png','html-logo.png', 'css-logo.png','java-logo.png'],
+    duration: '4weeks',
+    content: '12 Pages',
+    video: 'video/arthub.mp4',
+    showPlanning: true
+  },
+  {
+    title: '보드라이프',
+    desc: '하이브리드웹앱',
+    percent: 'Team 40%',
+    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png','java-logo.png'],
+    duration: '2weeks',
+    content: '12 Pages',
+    video: 'video/boardlife.mp4',
+    showPlanning: true
+  }
+];
+
+// 요소 캐싱
+const titleEl = document.querySelector('.project-title');
+const descEl = document.querySelector('.project-desc');
+const percentEl = document.querySelector('.percent');
+const stackIconsEl = document.querySelector('.stack-icons');
+const contentsEl = document.querySelector('.pub-contents');
+const videoEl = document.getElementById('project-video');
+const planningBtn = document.querySelector('.planning-btn');
+
+document.querySelectorAll('.thumb-list li').forEach((li, index) => {
+  li.addEventListener('click', () => {
+    const project = projects[index];
+
+    // 정보 박스 업데이트
+    fadeOutIn(document.querySelector('.proinfo-left'), () => {
+      titleEl.textContent = project.title;
+      descEl.textContent = project.desc;
+      percentEl.textContent = project.percent;
+      contentsEl.innerHTML = `
+        <p>작업기간: ${project.duration}</p>
+        <p>작업내용: ${project.content}</p>
+      `;
+      stackIconsEl.innerHTML = '';
+      project.stack.forEach(stackImg => {
+        const img = document.createElement('img');
+        img.src = `assets/img/publishing/${stackImg}`;
+        stackIconsEl.appendChild(img);
+      });
+    });
+
+    // 영상 업데이트
+    fadeOutIn(videoEl, () => {
+      videoEl.src = project.video;
+      videoEl.load();
+      videoEl.play();
+    });
+
+    if (project.showPlanning) {
+      planningBtn.classList.add('show');
+    } else {
+      planningBtn.classList.remove('show');
+    }
+  });
+});
+
+
+
+function fadeOutIn(element, updateFn) {
+  // 1단계: opacity 0
+  element.classList.remove('show');
+
+  // 2단계: 내용 교체 후 다시 보여줌
+  setTimeout(() => {
+    updateFn(); // 내부 내용 업데이트
+    element.classList.add('show');
+  }, 300); // transition 시간과 맞추기
+}

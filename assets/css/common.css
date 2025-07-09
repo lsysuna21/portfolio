@@ -136,6 +136,7 @@ body, html{
   padding: 5px 15px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .btn{
@@ -153,12 +154,22 @@ body, html{
   border: 2px solid #0D2B98;
   border-radius: 60px;
   transition: 0.3s;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 .btn:hover{
   background: #0D2B98;
   color: white;
 }
+.planning-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+.planning-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 .icon{
   color: #4B72FF;
@@ -198,7 +209,33 @@ body, html{
   transition: 1s;
 }
 
+.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.fade.show {
+  opacity: 1;
+}
 
+
+
+/* -----맥북에어----- */
+@media screen and (min-width: 1201px) and (max-width: 1280px){
+
+  #fp-nav ul li .fp-tooltip {
+    font-size: 15px;
+  }
+  .btn{
+    width: 14rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+  .percent{
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+}
 
 
 /* Tablet & Mobile 공통 - 인디케이터 점 줄이기 & 텍스트 숨기기 */
@@ -220,6 +257,16 @@ body, html{
   /* 글자 숨기기 */
   #fp-nav ul li .fp-tooltip {
     display: none !important;
+  }
+
+  .btn{
+    width: 14rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+  .percent{
+    font-size: 1.4rem;
+    font-weight: 500;
   }
 
   
