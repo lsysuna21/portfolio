@@ -57,7 +57,7 @@ const projects = [
     stack: ['figma-logo.png', 'html-logo.png','css-logo.png', 'jquery-logo.png'],
     duration: '3weeks',
     content: '12 Pages',
-    video: 'assets/img/publishing/billie.MP4',
+    video: 'assets/img/publishing/billie.mp4',
     showPlanning: false,
     siteLink: 'https://lsysuna21.github.io/billieeilish/',
     githubLink: 'https://github.com/lsysuna21/billieeilish'
@@ -69,7 +69,7 @@ const projects = [
     stack: ['figma-logo.png','html-logo.png', 'css-logo.png','java-logo.png'],
     duration: '4weeks',
     content: '12 Pages',
-    video: 'assets/img/publishing/arthub.MP4',
+    video: 'assets/img/publishing/arthub.mp4',
     showPlanning: true,
     siteLink: 'https://junes-lie.github.io/group-C/',
     githubLink: 'https://github.com/junes-lie/group-C',
@@ -82,7 +82,7 @@ const projects = [
     stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png','java-logo.png'],
     duration: '2weeks',
     content: '12 Pages',
-    video: 'assets/img/publishing/board.MP4',
+    video: 'assets/img/publishing/board.mp4',
     showPlanning: true,
     siteLink: 'https://reroll-boardlife.netlify.app/',
     githubLink: 'https://github.com/dasiy-design/boardlife',
@@ -222,6 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const modalOverlay = document.getElementById('modal-overlay');
 const modalImage = document.getElementById('modal-image');
 const modalClose = document.querySelector('.modal-close');
+
+function closeModal() {
+  modalOverlay.classList.remove('show');
+  modalImage.src = '';
+}
 
 // Planning 버튼 클릭 시 모달 열기
 planningBtn.addEventListener('click', (e) => {
