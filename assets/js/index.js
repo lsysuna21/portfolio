@@ -1,5 +1,5 @@
 /* 상장 이미지 마우스오버 */
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
     const hoverTargets = document.querySelectorAll(".hover-target");
     const hoverImg = document.getElementById("hover-img");
 
@@ -19,10 +19,164 @@ document.addEventListener("DOMContentLoaded", function () {
         hoverImg.style.display = "none";
       });
     });
-  });
+  }); */
 
 
-/* 퍼블리싱 썸네일 누르면 정보 바뀜 */
+
+/* ---- 공통 모달 시스템 ---- */
+class ModalSystem {
+  constructor() {
+    this.modalOverlay = null;
+    this.modalContent = null;
+    this.modalImage = null;
+    this.modalClose = null;
+    this.topButton = null;
+    this.fullpageApi = null; // fullpage.js API 참조
+    this.init();
+  }
+
+  init() {
+    // 모달 HTML 구조 생성
+    this.createModalStructure();
+    this.bindEvents();
+    this.initModalTriggers();
+  }
+
+  createModalStructure() {
+    // 기존 모달이 있다면 제거
+    const existingModal = document.getElementById('modal-overlay');
+    if (existingModal) {
+      existingModal.remove();
+    }
+
+    // 모달 HTML 생성
+    const modalHTML = `
+      <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <div class="modal-image-container">
+            <img id="modal-image" src="" alt="모달 이미지">
+            <button class="modal-top-btn" title="맨 위로">
+              <i class="xi-angle-up"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // body에 모달 추가
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // 요소 참조 저장
+    this.modalOverlay = document.getElementById('modal-overlay');
+    this.modalContent = this.modalOverlay.querySelector('.modal-content');
+    this.modalImage = document.getElementById('modal-image');
+    this.modalClose = this.modalOverlay.querySelector('.modal-close');
+    this.topButton = this.modalOverlay.querySelector('.modal-top-btn');
+  }
+
+  bindEvents() {
+    // 닫기 버튼 클릭
+    this.modalClose.addEventListener('click', () => this.closeModal());
+
+    // 오버레이 클릭 (모달 외부 클릭)
+    this.modalOverlay.addEventListener('click', (e) => {
+      if (e.target === this.modalOverlay) {
+        this.closeModal();
+      }
+    });
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.modalOverlay.classList.contains('show')) {
+        this.closeModal();
+      }
+    });
+
+    // 탑 버튼 클릭
+    this.topButton.addEventListener('click', () => {
+      this.modalContent.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 모달 스크롤 시 탑 버튼 표시/숨김
+    this.modalContent.addEventListener('scroll', () => {
+      if (this.modalContent.scrollTop > 200) {
+        this.topButton.classList.add('show');
+      } else {
+        this.topButton.classList.remove('show');
+      }
+    });
+  }
+
+  initModalTriggers() {
+    // 모든 .modal-trigger 클래스를 가진 요소에 이벤트 바인딩
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.modal-trigger');
+      if (trigger) {
+        e.preventDefault();
+        console.log('Modal trigger clicked:', trigger); // 디버깅용
+        const imageSrc = trigger.getAttribute('data-modal-image');
+        console.log('Image source:', imageSrc); // 디버깅용
+        if (imageSrc) {
+          this.openModal(imageSrc);
+        } else {
+          console.log('No data-modal-image attribute found');
+        }
+      }
+    });
+  }
+
+  openModal(imageSrc) {
+    console.log('Opening modal with image:', imageSrc); // 디버깅용
+    
+    // fullpage.js 스크롤 비활성화
+    if (window.fullpage_api) {
+      this.fullpageApi = window.fullpage_api;
+      this.fullpageApi.setAllowScrolling(false);
+      this.fullpageApi.setKeyboardScrolling(false);
+    }
+
+    // 모달 열기
+    this.modalImage.src = imageSrc;
+    this.modalOverlay.classList.add('show');
+    
+    // body 스크롤 방지
+    document.body.style.overflow = 'hidden';
+    
+    // 탑 버튼 초기화
+    this.topButton.classList.remove('show');
+    this.modalContent.scrollTop = 0;
+    
+    console.log('Modal opened'); // 디버깅용
+  }
+
+  closeModal() {
+    // fullpage.js 스크롤 활성화
+    if (this.fullpageApi) {
+      this.fullpageApi.setAllowScrolling(true);
+      this.fullpageApi.setKeyboardScrolling(true);
+    }
+
+    // 모달 닫기
+    this.modalOverlay.classList.remove('show');
+    this.modalImage.src = '';
+    
+    // body 스크롤 복구
+    document.body.style.overflow = '';
+    
+    // 탑 버튼 숨김
+    this.topButton.classList.remove('show');
+  }
+}
+
+
+
+
+
+/* ---- 퍼블리싱 썸네일 누르면 정보 바뀜 ---- */
 // 각 프로젝트 정보 정의
 const projects = [
   {
@@ -131,12 +285,14 @@ function updateProjectDetails(index) {
     siteBtn.href = project.siteLink;
     githubBtn.href = project.githubLink;
 
-    // Planning 버튼 표시/숨김 처리
+    // Planning 버튼 표시/숨김 및 모달 트리거 설정
     if (project.showPlanning && project.planningImage) {
-      planningBtn.classList.add('show');
-      planningBtn.href = '#'; // 모달용이므로 # 설정
+      planningBtn.classList.add('show', 'modal-trigger');
+      planningBtn.dataset.modalImage = project.planningImage;
+      planningBtn.href = '#';
     } else {
-      planningBtn.classList.remove('show');
+      planningBtn.classList.remove('show', 'modal-trigger');
+      planningBtn.removeAttribute('data-modal-image');
       planningBtn.href = '#';
     }
   });
@@ -167,11 +323,38 @@ document.querySelectorAll('.thumb-list li').forEach((li, index) => {
   });
 });
 
-// 페이지가 처음 로드될 때 첫 번째 프로젝트 정보로 초기화
-document.addEventListener('DOMContentLoaded', () => {
+// 상장 이미지 마우스오버 (기존 코드)
+document.addEventListener("DOMContentLoaded", function () {
+  // 모달 시스템 초기화
+  const modalSystem = new ModalSystem();
+
+  // 첫 번째 프로젝트 정보로 초기화
   updateProjectDetails(0);
   
-  /* 썸네일 갯수에 따라 좌우버튼 생기고 없어짐 */
+  // 상장 이미지 hover 효과
+  const hoverTargets = document.querySelectorAll(".hover-target");
+  const hoverImg = document.getElementById("hover-img");
+
+  if (hoverTargets.length > 0 && hoverImg) {
+    hoverTargets.forEach((target) => {
+      target.addEventListener("mouseenter", function () {
+        const imgSrc = this.dataset.img;
+        hoverImg.style.backgroundImage = `url(${imgSrc})`;
+        hoverImg.style.display = "block";
+      });
+
+      target.addEventListener("mousemove", function (e) {
+        hoverImg.style.left = e.pageX + 20 + "px";
+        hoverImg.style.top = e.pageY + 20 + "px";
+      });
+
+      target.addEventListener("mouseleave", function () {
+        hoverImg.style.display = "none";
+      });
+    });
+  }
+  
+  // 썸네일 네비게이션 버튼 처리
   const thumbList = document.querySelector('.thumb-list');
   const thumbItems = thumbList.querySelectorAll('li');
   const prevBtn = document.querySelector('.nav-btn.prev');
@@ -181,29 +364,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const isMobile = window.matchMedia("(max-width: 1200px)").matches;
   
   function updateNavButtons() {
-    // 화면에 보여줄 최대 썸네일 개수 (PC 기준)
     const MAX_VISIBLE_COUNT = 5;
 
     if (isMobile) {
-        const visibleCount = Math.floor(wrapper.offsetWidth / 150);
-        if (thumbItems.length <= visibleCount) {
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-        } else {
-            prevBtn.style.display = 'block';
-            nextBtn.style.display = 'block';
-        }
+      const visibleCount = Math.floor(wrapper.offsetWidth / 150);
+      if (thumbItems.length <= visibleCount) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+      }
     } else {
-        // PC 기준: 아이템 개수가 5개를 초과할 때만 버튼 표시
-        if (thumbItems.length > MAX_VISIBLE_COUNT) {
-            prevBtn.style.display = 'block';
-            nextBtn.style.display = 'block';
-        } else {
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-        }
+      if (thumbItems.length > MAX_VISIBLE_COUNT) {
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+      } else {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      }
     }
-}
+  }
 
   // 최초 실행 및 윈도우 리사이즈 대응
   updateNavButtons();
@@ -218,39 +399,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// 모달 관련 처리
-const modalOverlay = document.getElementById('modal-overlay');
-const modalImage = document.getElementById('modal-image');
-const modalClose = document.querySelector('.modal-close');
-
-function closeModal() {
-  modalOverlay.classList.remove('show');
-  modalImage.src = '';
-}
-
-// Planning 버튼 클릭 시 모달 열기
-planningBtn.addEventListener('click', (e) => {
-  e.preventDefault(); // a 태그의 기본 동작 방지
-  const project = projects[currentProjectIndex];
-
-  if (project.showPlanning && project.planningImage) {
-    modalImage.src = project.planningImage;
-    modalOverlay.classList.add('show');
-  }
-});
-
-// 모달 닫기 이벤트들
-modalClose.addEventListener('click', closeModal);
-
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
-    closeModal();
-  }
-});
-
-// ESC 키로 모달 닫기
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
-    closeModal();
-  }
-});
