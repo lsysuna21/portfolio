@@ -7,7 +7,7 @@
 #publishing .project-info{
   text-align: left;
   margin-top: 8rem;
-  margin-right: 5rem;
+  margin-right: 3rem;
 }
 #publishing .proinfo-left{
   padding-left: 1rem;
@@ -36,13 +36,16 @@
   font-weight: 300;
   margin-bottom: 7rem;
 }
+#publishing .pub-contents p{
+  margin-bottom: 0.5rem;
+}
 #publishing .imac-mockup{
   position: relative;
 }
 #publishing .imac-mockup img{
   width: 1035px;
   height: 870px;
-  margin-right: 5rem;
+  margin-right: 1rem;
 }
 #publishing .imac-mockup video{
   width: 940.362px;

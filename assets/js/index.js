@@ -59,8 +59,8 @@ const projects = [
     content: '12 Pages',
     video: 'video/billie.mp4',
     showPlanning: false,
-    siteLink: 'http://lsysuna21.dothome.co.kr/',
-    githubLink: 'https://github.com/user/gompyo'
+    siteLink: 'https://lsysuna21.github.io/billieeilish/',
+    githubLink: 'https://github.com/lsysuna21/billieeilish'
   },
   {
     title: '아트허브',
