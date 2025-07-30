@@ -132,6 +132,11 @@
 /* 기존 Planning 버튼과의 호환성 */
 .planning-btn.modal-trigger {
   pointer-events: auto;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  line-height: 1 !important;
 }
 .planning-btn:not(.show) {
   display: none;

@@ -142,13 +142,13 @@ body, html{
 .btn{
   width: 20rem;
   height: 5rem;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 2.5rem;
   font-weight: 600;
   color: #0D2B98;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   text-align: center;
   text-decoration: none;
   border: 2px solid #0D2B98;
@@ -159,6 +159,8 @@ body, html{
 .btn:hover{
   background: #0D2B98;
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .planning-btn {
   opacity: 0;
@@ -166,8 +168,11 @@ body, html{
   transition: opacity 0.3s ease;
 }
 .planning-btn.show {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 
