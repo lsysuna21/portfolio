@@ -13,12 +13,12 @@
   padding-left: 1rem;
   width: 300px;
 }
-#publishing .project-title{
+.project-title{
   font-size: 4rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
-#publishing .project-desc{
+.project-desc{
   font-size: 2rem;
   font-weight: 400;
 }
@@ -28,15 +28,15 @@
 #publishing .stack-icons img{
   margin-bottom: 1rem;
 }
-#publishing .stack-icons img{
+.stack-icons img{
   margin-right: 1rem;
 }
-#publishing .pub-contents{
+.pub-contents{
   font-size: 1.8rem;
   font-weight: 300;
   margin-bottom: 7rem;
 }
-#publishing .pub-contents p{
+.pub-contents p{
   margin-bottom: 0.5rem;
 }
 #publishing .imac-mockup{

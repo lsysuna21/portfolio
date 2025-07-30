@@ -1,3 +1,42 @@
-.section.bg04{
-  background: rgb(224, 224, 191)
+#UXUI .uxui-container .uxui-info{
+  margin: -0.5rem 0 1rem;
+  padding: 0;
+  height: 100px;
+}
+#UXUI .uxui-container .uxui-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#UXUI .uxui-container .uxui-info .pub-contents{
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 0rem;
+}
+#UXUI .project-title{
+  margin-right: 4rem;
+}
+#UXUI .stack-icons{
+  margin-right: 0.5rem;
+}
+#UXUI .uxui-container .uxui-info .pub-contents{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#UXUI .uxui-container .uxui-info .pub-contents p{
+  margin-bottom: 0rem;
+}
+
+#UXUI .uxui-container .btn{
+  z-index: 9999;
+  position: absolute;
+  bottom: 4.5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#UXUI .uxui-swiper img{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 60%;
 }

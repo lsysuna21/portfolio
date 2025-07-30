@@ -142,9 +142,9 @@ body, html{
 .btn{
   width: 20rem;
   height: 5rem;
-  /* display: inline-block; */
   font-size: 2.5rem;
   font-weight: 600;
+  background-color: white;
   color: #0D2B98;
   display: flex !important;
   justify-content: center !important;
