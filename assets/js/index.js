@@ -379,3 +379,80 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* --------UX/UI--------- */
+const projectsUXUI = [
+  {
+    title: '까탈로그 신청 페이지',
+    desc: 'Landing Page',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png'],
+    duration: '1week',
+    content: '신청페이지',
+    planningImage: 'assets/img/publishing/katalog-plan.png'
+  },
+  {
+    title: '다음 프로젝트',
+    desc: '서브 설명',
+    percent: 'Team 40%',
+    stack: ['figma-logo.png', 'html-logo.png'],
+    duration: '2weeks',
+    content: '기획 + 디자인',
+    planningImage: 'assets/img/publishing/another-plan.png'
+  }
+];
+
+function updateUXUIProjectDetails(index) {
+  const project = projectsUXUI[index];
+
+  const infoBox = document.querySelector('.uxui-info');
+  const titleEl = infoBox.querySelector('.project-title');
+  const descEl = infoBox.querySelector('.project-desc');
+  const percentEl = infoBox.querySelector('.percent');
+  const stackIconsEl = infoBox.querySelector('.stack-icons');
+  const contentsEl = infoBox.querySelector('.pub-contents');
+  const viewDetailBtn = infoBox.querySelector('.view-detail-btn');
+
+  fadeOutIn(infoBox, () => {
+    titleEl.textContent = project.title;
+    descEl.textContent = project.desc;
+    percentEl.textContent = project.percent;
+
+    stackIconsEl.innerHTML = '';
+    project.stack.forEach(img => {
+      const el = document.createElement('img');
+      el.src = `assets/img/publishing/${img}`;
+      stackIconsEl.appendChild(el);
+    });
+
+    contentsEl.innerHTML = `
+      <p>작업기간: ${project.duration}</p>
+      <p>작업내용: ${project.content}</p>
+    `;
+
+    viewDetailBtn.dataset.modalImage = project.planningImage;
+  });
+}
+
+/* 스와이퍼 초기화 */
+const uxuiSwiper = new Swiper('.uxui-swiper', {
+  slidesPerView: 1.5, // 한 번에 1.5장 보여줌
+  spaceBetween: 30,   // 슬라이드 간 간격
+  centeredSlides: true, // 가운데 정렬
+  loop: true,
+  navigation: {
+    nextEl: ".uxui-swiper-button-next",
+    prevEl: ".uxui-swiper-button-prev",
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 2.5, // 태블릿 이상에선 더 많이 보이게
+    },
+    1024: {
+      slidesPerView: 3, // 데스크탑에서는 3개 보이게 조절 가능
+    },
+  },
+});
+
+/* 페이지 로딩시 초기화 */
+document.addEventListener("DOMContentLoaded", function () {
+  updateUXUIProjectDetails(0); // 첫 프로젝트 정보 표시
+});
