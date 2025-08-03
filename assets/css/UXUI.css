@@ -47,13 +47,6 @@
   min-width: 200px;
 }
 
-#UXUI .uxui-container .uxui-info .pub-contents p {
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-
-
 
 /* 버튼 스타일 */
 #UXUI .uxui-container .btn {
@@ -64,8 +57,6 @@
   transform: translateX(-50%);
   transition: all 0.3s ease;
 }
-
-
 
 /* 스와이퍼 컨테이너 */
 #UXUI .uxui-swiper {
@@ -94,7 +85,7 @@
 /* 스와이퍼 이미지 */
 #UXUI .uxui-swiper img {
   width: 100%;
-  max-width: 100%; /* over-scale 방지 */
+  max-width: 100%;
   height: auto;
   height: auto;
   object-fit: contain;
@@ -105,7 +96,6 @@
   transform: scale(2);
 }
 
-/* 스와이퍼 네비게이션 버튼 */
 #UXUI .uxui-swiper-button-next,
 #UXUI .uxui-swiper-button-prev {
   color: #4B72FF;
@@ -121,15 +111,12 @@
   z-index: 20;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
-/* 버튼을 더 멀리 배치 */
 #UXUI .uxui-swiper-button-next {
   right: 20px;
 }
 #UXUI .uxui-swiper-button-prev {
   left: 20px;
 }
-
 #UXUI .uxui-swiper-button-next:after,
 #UXUI .uxui-swiper-button-prev:after {
   font-size: 2rem;
@@ -153,16 +140,16 @@
   opacity: 1;
   transform: translateY(0);
 }
-
 #UXUI .fade:not(.show) {
   opacity: 0;
   transform: translateY(10px);
 }
-
 #UXUI .fade.show {
   opacity: 1;
   transform: translateY(0);
 }
+
+
 
 .uxui-planning-btn {
   opacity: 0;

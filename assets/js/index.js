@@ -390,52 +390,47 @@ document.addEventListener("DOMContentLoaded", function () {
 /* --------UX/UI--------- */
 const projectsUXUI = [
   {
-    title: '까탈로그 신청 페이지',
-    desc: 'Landing Page',
+    title: '까탈로그 신청페이지',
     percent: 'Personal 100%',
     stack: ['figma-logo.png'],
-    duration: '1week',
-    content: '랜딩 페이지',
+    duration: '4H',
+    content: '랜딩페이지',
     planningImage: '',
     detailImage: 'assets/img/uxui/catal.png'
   },
   {
-    title: '누구나 프로젝트',
-    desc: 'Web Application',
-    percent: 'Team 60%',
+    title: '누구나',
+    percent: 'Personal 100%',
     stack: ['figma-logo.png'],
     duration: '2weeks',
-    content: '기획 + 디자인',
+    content: '모바일어플 전체페이지',
     planningImage: 'assets/img/uxui/nuguna-planning.png',
     detailImage: 'assets/img/uxui/nuguna-view.png'
   },
   {
-    title: '롯데시네마 리디자인',
-    desc: 'Mobile App',
+    title: '롯데시네마',
     percent: 'Personal 100%',
     stack: ['figma-logo.png'],
-    duration: '3weeks',
-    content: 'UI/UX 디자인',
+    duration: '1week',
+    content: '메인페이지',
     planningImage: '', 
     detailImage: 'assets/img/uxui/lotte.png'
   },
   {
     title: '동대문구립도서관',
-    desc: 'Website Redesign',
-    percent: 'Team 40%',
-    stack: ['figma-logo.png'],
-    duration: '2weeks',
-    content: '웹사이트 리디자인',
+    percent: 'Personal 100%',
+    stack: ['photo-logo.png'],
+    duration: '4H',
+    content: '메인&서브페이지',
     planningImage: '',
     detailImage: 'assets/img/uxui/d-view.png'
   },
   {
-    title: '코스모스 프로젝트',
-    desc: 'Brand Identity',
-    percent: 'Personal 100%',
-    stack: ['figma-logo.png'],
-    duration: '1week',
-    content: '브랜드 아이덴티티',
+    title: '코스모스',
+    percent: 'Team 30%',
+    stack: ['xd-logo.png'],
+    duration: '2Months',
+    content: '모바일어플 전체페이지',
     planningImage: '', 
     detailImage: 'assets/img/uxui/cosmos-view.pdf'
   }
