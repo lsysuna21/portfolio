@@ -382,20 +382,23 @@ document.addEventListener("DOMContentLoaded", function () {
 const projectsUXUI = [
   {
     title: '까탈로그 신청 페이지',
+    desc: 'Landing Page',
     percent: 'Personal 100%',
     stack: ['figma-logo.png'],
     duration: '1week',
     content: '랜딩 페이지',
-    planningImage: 'assets/img/uxui/catal.png'
+    planningImage: '',
+    detailImage: 'assets/img/uxui/catal.png'
   },
   {
     title: '누구나 프로젝트',
     desc: 'Web Application',
     percent: 'Team 60%',
-    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png'],
+    stack: ['figma-logo.png'],
     duration: '2weeks',
     content: '기획 + 디자인',
-    planningImage: 'assets/img/uxui/n-detail.png'
+    planningImage: 'assets/img/uxui/nuguna-planning.png',
+    detailImage: 'assets/img/uxui/n-detail.png'
   },
   {
     title: '롯데시네마 리디자인',
@@ -404,16 +407,18 @@ const projectsUXUI = [
     stack: ['figma-logo.png'],
     duration: '3weeks',
     content: 'UI/UX 디자인',
-    planningImage: 'assets/img/uxui/l-detail.png'
+    planningImage: '', 
+    detailImage: 'assets/img/uxui/l-detail.png'
   },
   {
     title: '동대문구립도서관',
     desc: 'Website Redesign',
     percent: 'Team 40%',
-    stack: ['figma-logo.png', 'html-logo.png'],
+    stack: ['figma-logo.png'],
     duration: '2weeks',
     content: '웹사이트 리디자인',
-    planningImage: 'assets/img/uxui/d-detail.png'
+    planningImage: '',
+    detailImage: 'assets/img/uxui/d-detail.png'
   },
   {
     title: '코스모스 프로젝트',
@@ -422,7 +427,8 @@ const projectsUXUI = [
     stack: ['figma-logo.png'],
     duration: '1week',
     content: '브랜드 아이덴티티',
-    planningImage: 'assets/img/uxui/ko-detail.png'
+    planningImage: '', 
+    detailImage: 'assets/img/uxui/ko-detail.png'
   }
 ];
 
@@ -430,7 +436,6 @@ function updateUXUIProjectDetails(index) {
   const project = projectsUXUI[index];
   if (!project) return;
 
-  // UX/UI 섹션 내부에서만 요소 검색
   const uxuiSection = document.getElementById('UXUI');
   if (!uxuiSection) return;
 
@@ -441,7 +446,8 @@ function updateUXUIProjectDetails(index) {
   const percentEl = infoBox.querySelector('.percent');
   const stackIconsEl = infoBox.querySelector('.stack-icons');
   const contentsEl = infoBox.querySelector('.pub-contents');
-  const viewDetailBtn = infoBox.querySelector('.view-detail-btn');
+  const viewDetailBtn = uxuiSection.querySelector('.view-detail-btn');
+  const planningBtn = uxuiSection.querySelector('.uxui-planning-btn');
 
   // 요소들이 존재하는지 확인
   if (!titleEl || !percentEl || !stackIconsEl || !contentsEl || !viewDetailBtn) {
@@ -488,7 +494,26 @@ function updateUXUIProjectDetails(index) {
       <p>작업내용: ${project.content}</p>
     `;
 
-    viewDetailBtn.setAttribute('data-modal-image', project.planningImage);
+    // View Detail 버튼 업데이트
+    viewDetailBtn.setAttribute('data-modal-image', project.detailImage);
+
+    // Planning 버튼 표시/숨김 및 모달 이미지 설정
+    if (planningBtn) {
+      // project.planningImage에 유효한 값이 있는지 확인하는 조건을 만듭니다.
+      const shouldShowPlanningBtn = project.planningImage && project.planningImage.trim() !== '';
+
+      // toggle을 사용하여 조건에 따라 'show' 클래스를 추가/제거합니다.
+      planningBtn.classList.toggle('show', shouldShowPlanningBtn);
+
+      // 버튼이 보여질 때만 data-modal-image 속성을 설정합니다.
+      if (shouldShowPlanningBtn) {
+      planningBtn.setAttribute('data-modal-image', project.planningImage);
+      } else {
+        planningBtn.removeAttribute('data-modal-image');
+      }
+    } else {
+      console.warn('Planning 버튼을 찾을 수 없습니다.');
+    }
   }
 }
 
@@ -556,3 +581,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 500); // 다른 초기화 코드들이 완료된 후 실행
 });
+
+
