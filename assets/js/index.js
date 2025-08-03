@@ -382,44 +382,104 @@ document.addEventListener("DOMContentLoaded", function () {
 const projectsUXUI = [
   {
     title: '까탈로그 신청 페이지',
-    desc: 'Landing Page',
     percent: 'Personal 100%',
-    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png'],
+    stack: ['figma-logo.png'],
     duration: '1week',
-    content: '신청페이지',
-    planningImage: 'assets/img/publishing/katalog-plan.png'
+    content: '랜딩 페이지',
+    planningImage: 'assets/img/uxui/catal.png'
   },
   {
-    title: '다음 프로젝트',
-    desc: '서브 설명',
+    title: '누구나 프로젝트',
+    desc: 'Web Application',
+    percent: 'Team 60%',
+    stack: ['figma-logo.png', 'html-logo.png', 'css-logo.png'],
+    duration: '2weeks',
+    content: '기획 + 디자인',
+    planningImage: 'assets/img/uxui/n-detail.png'
+  },
+  {
+    title: '롯데시네마 리디자인',
+    desc: 'Mobile App',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png'],
+    duration: '3weeks',
+    content: 'UI/UX 디자인',
+    planningImage: 'assets/img/uxui/l-detail.png'
+  },
+  {
+    title: '동대문구립도서관',
+    desc: 'Website Redesign',
     percent: 'Team 40%',
     stack: ['figma-logo.png', 'html-logo.png'],
     duration: '2weeks',
-    content: '기획 + 디자인',
-    planningImage: 'assets/img/publishing/another-plan.png'
+    content: '웹사이트 리디자인',
+    planningImage: 'assets/img/uxui/d-detail.png'
+  },
+  {
+    title: '코스모스 프로젝트',
+    desc: 'Brand Identity',
+    percent: 'Personal 100%',
+    stack: ['figma-logo.png'],
+    duration: '1week',
+    content: '브랜드 아이덴티티',
+    planningImage: 'assets/img/uxui/ko-detail.png'
   }
 ];
 
 function updateUXUIProjectDetails(index) {
   const project = projectsUXUI[index];
+  if (!project) return;
 
-  const infoBox = document.querySelector('.uxui-info');
+  // UX/UI 섹션 내부에서만 요소 검색
+  const uxuiSection = document.getElementById('UXUI');
+  if (!uxuiSection) return;
+
+  const infoBox = uxuiSection.querySelector('.uxui-info');
+  if (!infoBox) return;
+
   const titleEl = infoBox.querySelector('.project-title');
-  const descEl = infoBox.querySelector('.project-desc');
   const percentEl = infoBox.querySelector('.percent');
   const stackIconsEl = infoBox.querySelector('.stack-icons');
   const contentsEl = infoBox.querySelector('.pub-contents');
   const viewDetailBtn = infoBox.querySelector('.view-detail-btn');
 
-  fadeOutIn(infoBox, () => {
+  // 요소들이 존재하는지 확인
+  if (!titleEl || !percentEl || !stackIconsEl || !contentsEl || !viewDetailBtn) {
+    console.warn('UX/UI 섹션의 일부 요소를 찾을 수 없습니다.');
+    return;
+  }
+
+  // 안전한 fade 효과 적용
+  const fadeElement = infoBox.querySelector('.fade') || infoBox;
+  
+  // fadeOutIn 함수가 있으면 사용, 없으면 직접 구현
+  if (typeof fadeOutIn === 'function') {
+    fadeOutIn(infoBox, () => {
+      updateUXUIContent();
+    });
+  } else {
+    // fade 클래스가 있으면 fade 효과 적용
+    if (fadeElement.classList.contains('fade')) {
+      fadeElement.classList.remove('show');
+      setTimeout(() => {
+        updateUXUIContent();
+        fadeElement.classList.add('show');
+      }, 300);
+    } else {
+      // fade 클래스가 없으면 바로 업데이트
+      updateUXUIContent();
+    }
+  }
+
+  function updateUXUIContent() {
     titleEl.textContent = project.title;
-    descEl.textContent = project.desc;
     percentEl.textContent = project.percent;
 
     stackIconsEl.innerHTML = '';
     project.stack.forEach(img => {
       const el = document.createElement('img');
       el.src = `assets/img/publishing/${img}`;
+      el.alt = img.replace('-logo.png', '');
       stackIconsEl.appendChild(el);
     });
 
@@ -428,31 +488,71 @@ function updateUXUIProjectDetails(index) {
       <p>작업내용: ${project.content}</p>
     `;
 
-    viewDetailBtn.dataset.modalImage = project.planningImage;
+    viewDetailBtn.setAttribute('data-modal-image', project.planningImage);
+  }
+}
+
+/* UX/UI 스와이퍼 변수 */
+let uxuiSwiper;
+
+/* UX/UI 스와이퍼 초기화 함수 */
+function initUXUISwiper() {
+  // 스와이퍼 컨테이너 존재 확인
+  const swiperContainer = document.querySelector('.uxui-swiper');
+  if (!swiperContainer) {
+    console.warn('UX/UI 스와이퍼 컨테이너를 찾을 수 없습니다.');
+    return;
+  }
+
+  // 이미 초기화되어 있다면 제거
+  if (uxuiSwiper) {
+    uxuiSwiper.destroy(true, true);
+  }
+
+  uxuiSwiper = new Swiper('.uxui-swiper', {
+    slidesPerView: 1.5,
+    spaceBetween: 30,
+    centeredSlides: true,
+    loop: true,
+    initialSlide: 0,
+    
+    navigation: {
+      nextEl: ".uxui-swiper-button-next",
+      prevEl: ".uxui-swiper-button-prev",
+    },
+    
+    // 슬라이드 변경 시 이벤트
+    on: {
+      slideChange: function () {
+        const realIndex = this.realIndex;
+        updateUXUIProjectDetails(realIndex);
+      },
+      
+      // 스와이퍼 초기화 완료 후
+      init: function() {
+        updateUXUIProjectDetails(0);
+      }
+    },
+    
+    breakpoints: {
+      768: {
+        slidesPerView: 2.5,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
   });
 }
 
-/* 스와이퍼 초기화 */
-const uxuiSwiper = new Swiper('.uxui-swiper', {
-  slidesPerView: 1.5, // 한 번에 1.5장 보여줌
-  spaceBetween: 30,   // 슬라이드 간 간격
-  centeredSlides: true, // 가운데 정렬
-  loop: true,
-  navigation: {
-    nextEl: ".uxui-swiper-button-next",
-    prevEl: ".uxui-swiper-button-prev",
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 2.5, // 태블릿 이상에선 더 많이 보이게
-    },
-    1024: {
-      slidesPerView: 3, // 데스크탑에서는 3개 보이게 조절 가능
-    },
-  },
-});
-
-/* 페이지 로딩시 초기화 */
+/* UX/UI 섹션 초기화 - 기존 DOMContentLoaded에 추가 */
 document.addEventListener("DOMContentLoaded", function () {
-  updateUXUIProjectDetails(0); // 첫 프로젝트 정보 표시
+  // Swiper 라이브러리 로딩 확인 후 UX/UI 스와이퍼 초기화
+  setTimeout(() => {
+    if (typeof Swiper !== 'undefined') {
+      initUXUISwiper();
+    } else {
+      console.warn('Swiper 라이브러리가 로드되지 않았습니다.');
+    }
+  }, 500); // 다른 초기화 코드들이 완료된 후 실행
 });
