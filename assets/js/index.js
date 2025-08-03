@@ -92,13 +92,22 @@ class ModalSystem {
       const trigger = e.target.closest('.modal-trigger');
       if (trigger) {
         e.preventDefault();
-        console.log('Modal trigger clicked:', trigger); // 디버깅용
-        const imageSrc = trigger.getAttribute('data-modal-image');
-        console.log('Image source:', imageSrc); // 디버깅용
-        if (imageSrc) {
-          this.openModal(imageSrc);
-        } else {
+        const mediaSrc = trigger.getAttribute ('data-modal-image');
+
+        if (!mediaSrc) {
           console.log('No data-modal-image attribute found');
+          return;
+        }
+
+        const isPDF = mediaSrc.toLowerCase().endsWith('.pdf');
+
+        if (isPDF) {
+          // PDF 파일이면 새 창으로 열기
+          window.open(mediaSrc, '_blank');
+          console.log('Opening PDF in new tab:', mediaSrc);
+        } else {
+          // 이미지 파일이면 기존 모달 열기
+          this.openModal(mediaSrc);
         }
       }
     });
@@ -398,7 +407,7 @@ const projectsUXUI = [
     duration: '2weeks',
     content: '기획 + 디자인',
     planningImage: 'assets/img/uxui/nuguna-planning.png',
-    detailImage: 'assets/img/uxui/n-detail.png'
+    detailImage: 'assets/img/uxui/nuguna-view.png'
   },
   {
     title: '롯데시네마 리디자인',
@@ -408,7 +417,7 @@ const projectsUXUI = [
     duration: '3weeks',
     content: 'UI/UX 디자인',
     planningImage: '', 
-    detailImage: 'assets/img/uxui/l-detail.png'
+    detailImage: 'assets/img/uxui/lotte.png'
   },
   {
     title: '동대문구립도서관',
@@ -418,7 +427,7 @@ const projectsUXUI = [
     duration: '2weeks',
     content: '웹사이트 리디자인',
     planningImage: '',
-    detailImage: 'assets/img/uxui/d-detail.png'
+    detailImage: 'assets/img/uxui/d-view.png'
   },
   {
     title: '코스모스 프로젝트',
@@ -428,7 +437,7 @@ const projectsUXUI = [
     duration: '1week',
     content: '브랜드 아이덴티티',
     planningImage: '', 
-    detailImage: 'assets/img/uxui/ko-detail.png'
+    detailImage: 'assets/img/uxui/cosmos-view.pdf'
   }
 ];
 
@@ -535,8 +544,8 @@ function initUXUISwiper() {
   }
 
   uxuiSwiper = new Swiper('.uxui-swiper', {
-    slidesPerView: 1.5,
-    spaceBetween: 30,
+    slidesPerView: 3,
+    spaceBetween: 10, //간격 줄이기
     centeredSlides: true,
     loop: true,
     initialSlide: 0,
@@ -555,7 +564,7 @@ function initUXUISwiper() {
       
       // 스와이퍼 초기화 완료 후
       init: function() {
-        updateUXUIProjectDetails(0);
+        updateUXUIProjectDetails(this.realIndex); 
       }
     },
     
@@ -581,5 +590,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 500); // 다른 초기화 코드들이 완료된 후 실행
 });
-
-
