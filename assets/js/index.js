@@ -203,7 +203,7 @@ const projects = [
   {
     title: '아트허브',
     desc: '반응형 전체페이지',
-    percent: 'Team 40%',
+    percent: 'Team 30%',
     stack: ['figma-logo.png','html-logo.png', 'css-logo.png','java-logo.png'],
     duration: '4weeks',
     content: '12 Pages',
@@ -585,3 +585,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 500); // 다른 초기화 코드들이 완료된 후 실행
 });
+

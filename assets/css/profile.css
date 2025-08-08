@@ -185,9 +185,9 @@
 .figma .progress-fill { --target-width: 90%; animation-delay: 7.3s; }
 .html .progress-fill { --target-width: 90%; animation-delay: 7.4s; }
 .css .progress-fill { --target-width: 85%; animation-delay: 7.5s; }
-.jquery .progress-fill { --target-width: 70%; animation-delay: 7.6s; }
-.javascript .progress-fill { --target-width: 70%; animation-delay: 7.7s; }
-.github .progress-fill { --target-width: 85%; animation-delay: 7.8s; }
+.jquery .progress-fill { --target-width: 65%; animation-delay: 7.6s; }
+.javascript .progress-fill { --target-width: 65%; animation-delay: 7.7s; }
+.github .progress-fill { --target-width: 80%; animation-delay: 7.8s; }
 
 #profile .swiper-slide.profile2{
   display: flex;

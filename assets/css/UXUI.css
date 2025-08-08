@@ -49,12 +49,18 @@
 
 
 /* 버튼 스타일 */
-#UXUI .uxui-container .btn {
-  z-index: 9999;
+#UXUI .button-container {
   position: absolute;
   left: 50%;
   bottom: -71rem;
   transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 9999;
+  justify-content: center; /* 중앙 정렬 */
+}
+#UXUI .uxui-container .btn {
+  position: relative;
   transition: all 0.3s ease;
 }
 
@@ -154,12 +160,20 @@
 .uxui-planning-btn {
   opacity: 0;
   visibility: hidden;
-  display: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 .uxui-planning-btn.show {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
+  width: 20rem;
+  height: 5rem;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
