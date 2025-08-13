@@ -1,3 +1,213 @@
-.section.bg06{
-  background: #8e81a5 ;
+.threed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.threed-item {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.threed-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.threed-item-image {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.threed-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  transition: opacity 0.3s ease;
+}
+
+/* 호버 시 두 번째 이미지 표시 */
+.threed-item img.image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.threed-item:hover img.image-default{
+    opacity: 0;
+}
+
+.threed-item:hover img.image-hover {
+  opacity: 1;
+}
+
+/* 비디오는 숨기기 (모달에서만 사용) */
+.threed-item video {
+  display: none;
+}
+
+.threed-item-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.threed-item-subtitle {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 그리드 위치 설정 */
+.threed-item-1 { grid-column: 1; grid-row: 1; }
+.threed-item-2 { grid-column: 2; grid-row: 1; }
+.threed-item-3 { grid-column: 3; grid-row: 1; }
+.threed-item-4 { grid-column: 1; grid-row: 2; }
+.threed-item-5 { grid-column: 2; grid-row: 2; }
+.threed-item-6 { grid-column: 3; grid-row: 2; }
+
+/* 모달 스타일 */
+.threed-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.threed-modal.active {
+  display: flex;
+  opacity: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.threed-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.threed-modal.active .threed-modal-content {
+  transform: scale(1);
+}
+
+.threed-modal-media {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.threed-modal-image {
+  object-fit: contain;
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+.threed-modal-video {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+.threed-modal-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.threed-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.threed-modal-title {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+/* goToCover 버튼 */
+.goToCover {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.goToCover img {
+  width: 40px;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.goToCover:hover img {
+  opacity: 1;
+}
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .threed-section {
+    padding: 0 2rem;
+  }
+
+  .threed-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .threed-item-1, .threed-item-2, .threed-item-3,
+  .threed-item-4, .threed-item-5, .threed-item-6 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .threed-modal-content {
+    max-width: 95%;
+    max-height: 95%;
+  }
 }
