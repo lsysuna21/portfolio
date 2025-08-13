@@ -87,35 +87,55 @@ class ModalSystem {
   }
 
   initModalTriggers() {
-    // 모든 .modal-trigger 클래스를 가진 요소에 이벤트 바인딩
     document.addEventListener('click', (e) => {
       const trigger = e.target.closest('.modal-trigger');
-      if (trigger) {
-        e.preventDefault();
-        const mediaSrc = trigger.getAttribute ('data-modal-image');
-
-        if (!mediaSrc) {
-          console.log('No data-modal-image attribute found');
-          return;
-        }
-
-        const isPDF = mediaSrc.toLowerCase().endsWith('.pdf');
-
-        if (isPDF) {
-          // PDF 파일이면 새 창으로 열기
-          window.open(mediaSrc, '_blank');
-          console.log('Opening PDF in new tab:', mediaSrc);
-        } else {
-          // 이미지 파일이면 기존 모달 열기
-          this.openModal(mediaSrc);
-        }
+      if (!trigger) return;
+    
+      e.preventDefault();
+    
+      const imgSrc = trigger.getAttribute('data-modal-image');
+      if (!imgSrc) {
+        console.log('No data-modal-image attribute found');
+        return;
       }
+    
+      const isPDF = imgSrc.toLowerCase().endsWith('.pdf');
+      if (isPDF) {
+        window.open(imgSrc, '_blank');
+        return;
+      }
+    
+      // 비디오 관련 속성 읽기
+      const videoSrc = trigger.getAttribute ('data-modal-video') || null;
+      const opts = {
+        top: trigger.getAttribute('data-video-top')   ||  null,
+        left: trigger.getAttribute('data-video-left')  ||  null,
+        width: trigger.getAttribute('data-video-width') ||  null,
+        aspect:trigger.getAttribute('data-video-aspect')||  null,
+      };
+    
+      this.openModal(imgSrc, videoSrc);
     });
   }
 
-  openModal(imageSrc) {
-    console.log('Opening modal with image:', imageSrc); // 디버깅용
-    
+  openModal(imageSrc, opts) {
+    // ---- 옵션 정규화(문자열/객체/undefined 모두 허용) ----
+    if (typeof opts === 'string') {
+      opts = { videoSrc: opts };
+    }
+    if (!opts || typeof opts !== 'object') {
+      opts = {};
+    }
+    const {
+      videoSrc = null,
+      top = null,
+      left = null,
+      width = null,
+      aspect = null
+    } = opts;
+
+    console.log('Opening modal with image:', imageSrc);
+
     // fullpage.js 스크롤 비활성화
     if (window.fullpage_api) {
       this.fullpageApi = window.fullpage_api;
@@ -123,18 +143,45 @@ class ModalSystem {
       this.fullpageApi.setKeyboardScrolling(false);
     }
 
-    // 모달 열기
+    // 이미지 세팅
     this.modalImage.src = imageSrc;
+
+    // 기존 비디오 오버레이 제거
+    const oldOverlay = this.modalContent.querySelector('.modal-video-overlay');
+    if (oldOverlay) oldOverlay.remove();
+
+    // 비디오가 있다면 오버레이 생성
+    if (videoSrc) {
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-video-overlay';
+
+      // 위치/크기 옵션 적용 (있을 때만)
+      if (top)   overlay.style.top = top;
+      if (left)  overlay.style.left = left;
+      if (width) overlay.style.width = width;
+      if (aspect) overlay.style.aspectRatio = aspect;
+
+      // top/left 지정한 경우에도 중앙 기준 정렬 유지
+      if (top || left) overlay.style.transform = 'translate(-50%, -50%)';
+
+      overlay.innerHTML = `
+        <video autoplay muted playsinline controls  preload="metadata">
+          <source src="${videoSrc}">
+          해당 브라우저는 동영상을 지원하지 않습니다.
+        </video>
+      `;
+
+      const container = this.modalContent.querySelector('.modal-image-container');
+      container.appendChild(overlay);
+    }
+
+    // 모달 표시
     this.modalOverlay.classList.add('show');
-    
-    // body 스크롤 방지
     document.body.style.overflow = 'hidden';
-    
-    // 탑 버튼 초기화
     this.topButton.classList.remove('show');
     this.modalContent.scrollTop = 0;
-    
-    console.log('Modal opened'); // 디버깅용
+
+    console.log('Modal opened');
   }
 
   closeModal() {

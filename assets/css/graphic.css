@@ -85,10 +85,7 @@
 
 
 /* 반응형 */
-/* @media (max-width: 768px) {
-  .graphic-section {
-    padding: 0 2rem;
-  }
+@media (max-width: 768px) {
   
   .graphic-grid {
     grid-template-columns: 1fr;
@@ -105,4 +102,4 @@
   .item-3 { grid-row: 3 / 4; }
   .item-4 { grid-row: 4 / 5; }
   .item-5 { grid-row: 5 / 6; }
-} */
+}
