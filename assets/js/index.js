@@ -272,7 +272,7 @@ const projects = [
     stack: ['figma-logo.png', 'html-logo.png','css-logo.png', 'jquery-logo.png'],
     duration: '3weeks',
     content: '12 Pages',
-    video: 'assets/img/publishing/billie.MP4',
+    video: '/portfolio/assets/img/publishing/billie.MP4',
     showPlanning: false,
     siteLink: 'https://lsysuna21.github.io/billieeilish/',
     githubLink: 'https://github.com/lsysuna21/billieeilish'
