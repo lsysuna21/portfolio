@@ -31,6 +31,17 @@ class ModalSystem {
           <span class="modal-close">&times;</span>
           <div class="modal-image-container">
             <img id="modal-image" src="" alt="모달 이미지">
+            <div id="modal-buttons-container" class="modal-buttons-container" style="display: none;">
+              <a href="#" id="business-plan-btn" class="btn modal-btn" target="_blank">
+                사업계획서&nbsp;<i class="fa fa-chevron-right"></i>
+              </a>
+              <a href="#" id="final-ppt-btn" class="btn modal-btn" target="_blank">
+                최종 PPT&nbsp;<i class="fa fa-chevron-right"></i>
+              </a>
+              <a href="#" id="news-link-btn" class="btn modal-btn" target="_blank">
+                뉴스 기사&nbsp;<i class="fa fa-chevron-right"></i>
+              </a>
+            </div>
             <button class="modal-top-btn" title="맨 위로">
               <i class="xi-angle-up"></i>
             </button>
@@ -48,6 +59,10 @@ class ModalSystem {
     this.modalImage = document.getElementById('modal-image');
     this.modalClose = this.modalOverlay.querySelector('.modal-close');
     this.topButton = this.modalOverlay.querySelector('.modal-top-btn');
+    this.modalButtonsContainer = document.getElementById('modal-buttons-container');
+    this.businessPlanBtn = document.getElementById('business-plan-btn');
+    this.finalPptBtn = document.getElementById('final-ppt-btn');
+    this.newsLinkBtn = document.getElementById('news-link-btn');
   }
 
   bindEvents() {
@@ -114,27 +129,12 @@ class ModalSystem {
         aspect:trigger.getAttribute('data-video-aspect')||  null,
       };
     
-      this.openModal(imgSrc, videoSrc);
+      this.openModal(imgSrc, videoSrc, trigger);
     });
   }
 
-  openModal(imageSrc, opts) {
-    // ---- 옵션 정규화(문자열/객체/undefined 모두 허용) ----
-    if (typeof opts === 'string') {
-      opts = { videoSrc: opts };
-    }
-    if (!opts || typeof opts !== 'object') {
-      opts = {};
-    }
-    const {
-      videoSrc = null,
-      top = null,
-      left = null,
-      width = null,
-      aspect = null
-    } = opts;
-
-    console.log('Opening modal with image:', imageSrc);
+  openModal(imageSrc, videoSrc = null, trigger = null) {
+    this.modalImage.src = imageSrc;
 
     // fullpage.js 스크롤 비활성화
     if (window.fullpage_api) {
@@ -143,45 +143,74 @@ class ModalSystem {
       this.fullpageApi.setKeyboardScrolling(false);
     }
 
-    // 이미지 세팅
-    this.modalImage.src = imageSrc;
-
-    // 기존 비디오 오버레이 제거
-    const oldOverlay = this.modalContent.querySelector('.modal-video-overlay');
-    if (oldOverlay) oldOverlay.remove();
-
-    // 비디오가 있다면 오버레이 생성
+    // 벤또롱또똣 프로젝트 확인 (이미지 경로로 판단)
+  const isBentoProject = imageSrc.includes('bentto.jpg');
+  
+  if (isBentoProject && trigger) {
+    // 벤또롱또똣 프로젝트인 경우 버튼들 표시
+    this.showBentoButtons();
+    // 벤또롱또똣 전용 클래스 추가
+    this.modalOverlay.classList.add('bento-modal');
+  } else {
+    // 다른 프로젝트인 경우 버튼들 숨김
+    this.hideBentoButtons();
+    // 벤또롱또똣 전용 클래스 제거
+    this.modalOverlay.classList.remove('bento-modal');
+  }
+    
+    // 비디오가 있는 경우 처리
     if (videoSrc) {
-      const overlay = document.createElement('div');
-      overlay.className = 'modal-video-overlay';
-
-      // 위치/크기 옵션 적용 (있을 때만)
-      if (top)   overlay.style.top = top;
-      if (left)  overlay.style.left = left;
-      if (width) overlay.style.width = width;
-      if (aspect) overlay.style.aspectRatio = aspect;
-
-      // top/left 지정한 경우에도 중앙 기준 정렬 유지
-      if (top || left) overlay.style.transform = 'translate(-50%, -50%)';
-
-      overlay.innerHTML = `
-        <video autoplay muted playsinline controls  preload="metadata">
-          <source src="${videoSrc}">
-          해당 브라우저는 동영상을 지원하지 않습니다.
-        </video>
-      `;
-
-      const container = this.modalContent.querySelector('.modal-image-container');
-      container.appendChild(overlay);
+      this.addVideoToModal(videoSrc, isBentoProject);
+    } else {
+      this.removeVideoFromModal();
     }
-
-    // 모달 표시
+    
     this.modalOverlay.classList.add('show');
     document.body.style.overflow = 'hidden';
-    this.topButton.classList.remove('show');
-    this.modalContent.scrollTop = 0;
+  }
 
-    console.log('Modal opened');
+  showBentoButtons() {
+    // 버튼 링크
+    this.businessPlanBtn.href = 'assets/img/etc/bento-plan.pdf';
+    this.finalPptBtn.href = 'assets/img/etc/bento.pdf';
+    this.newsLinkBtn.href = 'https://news.unn.net/news/articleView.html?idxno=549129';
+    
+    this.modalButtonsContainer.style.display = 'flex';
+  }
+
+  hideBentoButtons() {
+    this.modalButtonsContainer.style.display = 'none';
+  }
+
+  addVideoToModal(videoSrc, isBentoProject = false) {
+    // 기존 비디오 오버레이 제거
+    this.removeVideoFromModal();
+    
+    
+    const videoOverlay = document.createElement('div');
+    videoOverlay.className = 'modal-video-overlay';
+
+    // 👇 벤또롱또똣 프로젝트일 경우, 전용 클래스를 추가합니다.
+    if (isBentoProject) {
+      videoOverlay.classList.add('bento-video');
+    }
+
+    videoOverlay.innerHTML = `
+      <video controls autoplay muted>
+        <source src="${videoSrc}" type="video/mp4">
+        브라우저가 비디오를 지원하지 않습니다.
+      </video>
+    `;
+    
+    // modal-image의 부모 요소에 비디오 오버레이를 추가합니다.
+    this.modalImage.parentNode.appendChild(videoOverlay);
+  }
+
+  removeVideoFromModal() {
+    const existingVideo = this.modalOverlay.querySelector('.modal-video-overlay');
+    if (existingVideo) {
+      existingVideo.remove();
+    }
   }
 
   closeModal() {
@@ -202,6 +231,7 @@ class ModalSystem {
     this.topButton.classList.remove('show');
   }
 }
+
 
 
 

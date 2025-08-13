@@ -1,0 +1,76 @@
+/* 벤또 프로젝트 전용 비디오 위치 */
+.bento-modal .modal-video-overlay.bento-video {
+  position: absolute;
+  top: 78.5%;
+  left: 65%;
+  width: 80rem; 
+  transform: translate(-50%, -50%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.bento-modal .modal-video-overlay.bento-video video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* 모달 버튼 컨테이너 스타일 */
+.modal-buttons-container {
+  position: absolute;
+  top: 24%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+.modal-buttons-container .btn {
+  pointer-events: auto;
+  width: 18rem;
+  height: 4.5rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0D2B98;
+  border: 2px solid #0D2B98;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.modal-buttons-container .btn:hover {
+  background: #0D2B98;
+  color: white;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(13, 43, 152, 0.3);
+}
+
+
+
+
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .modal-buttons-container .btn {
+    width: 15rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+  
+  .modal-buttons-container {
+    gap: 1rem;
+  }
+  
+  .modal-close {
+    top: -30px;
+    right: -20px;
+    font-size: 2.5rem;
+  }
+}
