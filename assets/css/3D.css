@@ -48,18 +48,11 @@
   left: 0;
   opacity: 0;
 }
-
 .threed-item:hover img.image-default{
-    opacity: 0;
+  opacity: 0;
 }
-
 .threed-item:hover img.image-hover {
   opacity: 1;
-}
-
-/* 비디오는 숨기기 (모달에서만 사용) */
-.threed-item video {
-  display: none;
 }
 
 .threed-item-title {
@@ -168,46 +161,83 @@
   width: 100%;
 }
 
-/* goToCover 버튼 */
-.goToCover {
+
+
+.modal-content.has-video {
+  position: relative;
+}
+
+.modal-video-overlay {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; /* 모달 이미지의 60% 크기 */
+  max-width: 400px;
+  aspect-ratio: 16/9; /* 동영상 비율 */
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   z-index: 10;
-  text-decoration: none;
 }
 
-.goToCover img {
+.modal-video-overlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.modal-video-controls {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.video-play-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
   width: 40px;
-  height: auto;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
 }
 
-.goToCover:hover img {
-  opacity: 1;
+.video-play-btn:hover {
+  background: rgba(255, 255, 255, 1);
 }
+
+.video-time {
+  color: white;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
 
 
 /* 반응형 */
 @media (max-width: 768px) {
-  .threed-section {
-    padding: 0 2rem;
-  }
 
   .threed-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .threed-item-1, .threed-item-2, .threed-item-3,
-  .threed-item-4, .threed-item-5, .threed-item-6 {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .threed-modal-content {
-    max-width: 95%;
-    max-height: 95%;
+  .modal-video-overlay {
+    width: 80%;
+    max-width: 300px;
   }
 }
