@@ -216,16 +216,121 @@
 }
 
 /* -----Mobile----- */
-/* @media (max-width: 768px) {
-  .portfolio-container {
+@media (max-width: 768px) {
+  .publishing-container {
     flex-direction: column;
+    align-items: left;
+    margin: auto;
   }
-  .thumbnail-gallery {
+
+  #publishing .project-info{
+    text-align: left;
+    margin: 1rem ;
+    position: relative;
+  }
+  #publishing .proinfo-left{
+    width: 200px;
+  }
+  .project-title{
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .project-desc{
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .pub-contents{
+    font-size: 1.4rem;
+    position: absolute;
+    top: 15rem;
+    left: 1rem;
+  }
+
+  #publishing .stack-icons{
+    margin: 1rem 0 7rem;
+  }
+  #publishing .stack-icons img{
+    margin-bottom: 1rem;
+    width: 3rem;
+  }
+
+
+  #publishing .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    align-items: center;
+    margin: 0rem;
+    position: absolute;
+    top: 5rem;
+    right: 18rem;
+  }
+  #publishing .btn{
+    margin-bottom: 1rem;
+  }
+
+  #publishing .imac-mockup img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 391.69px;
+    height: 329.22px;
+    margin: 0;
+  }
+  #publishing .imac-mockup video{
+    width: 355.93px;
+    height: 200px;
+    background: #ffffff;
+    position: absolute;
+    top: 1.7rem;
+    left: 1.8rem;
+  }
+
+  #publishing .thumbnail-gallery {
     flex-direction: row;
-    overflow-x: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+
+    /* 스와이프 영역을 위한 추가 설정 */
+    overflow: hidden;
   }
-  .thumb-list {
-    flex-direction: row;
-    overflow-x: scroll;
+
+  #publishing .thumb-list {
+    display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; 
+  gap: 1rem;
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  padding: 0 1rem;
+  -webkit-overflow-scrolling: touch;
+  /* 스와이프 개선을 위한 추가 스타일 */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    /* 각 아이템이 줄어들지 않도록 설정 */
+    min-width: 100%;
   }
-} */
+  /* 스크롤바 숨기기 (Webkit 브라우저) */
+  #publishing .thumb-list::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  #publishing .thumb-list .logo-wrap {
+    width: 100px;
+    height: 70px;
+    /* 아이템이 축소되지 않도록 설정 */
+    flex-shrink: 0;
+    /* 터치 영역을 더 명확하게 하기 위한 설정 */
+    cursor: pointer;
+  }
+  #publishing .thumb-list .logo-wrap img {
+    max-width: 55%;
+    /* 터치 반응성 개선 */
+    pointer-events: none;
+  }
+}

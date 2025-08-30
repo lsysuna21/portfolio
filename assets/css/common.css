@@ -339,8 +339,8 @@ body, html{
   .top{
     display: inline-block;
     position: fixed;
-    bottom: 4rem;
-    right: 3.5rem;
+    bottom: 3rem;
+    right: 2rem;
     z-index: 9999;
   }
 
