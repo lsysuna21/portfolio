@@ -288,50 +288,40 @@
     left: 1.8rem;
   }
 
-  #publishing .thumbnail-gallery {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    width: 100%;
 
-    /* 스와이프 영역을 위한 추가 설정 */
-    overflow: hidden;
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  #publishing .thumbnail-gallery {
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
   }
 
   #publishing .thumb-list {
-    display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap; 
-  gap: 1rem;
-  overflow-x: auto; 
-  overflow-y: hidden; 
-  padding: 0 1rem;
-  -webkit-overflow-scrolling: touch;
-  /* 스와이프 개선을 위한 추가 스타일 */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto; /* 가로 스크롤 */
+    overflow-y: hidden;
+    padding: 1rem;
+    
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    /* 각 아이템이 줄어들지 않도록 설정 */
-    min-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  /* 스크롤바 숨기기 (Webkit 브라우저) */
+  /* 스크롤바 숨기기 (Chrome, Safari, Opera) */
   #publishing .thumb-list::-webkit-scrollbar {
     display: none;
   }
 
-
   #publishing .thumb-list .logo-wrap {
     width: 100px;
     height: 70px;
-    /* 아이템이 축소되지 않도록 설정 */
     flex-shrink: 0;
-    /* 터치 영역을 더 명확하게 하기 위한 설정 */
     cursor: pointer;
-  }
-  #publishing .thumb-list .logo-wrap img {
-    max-width: 55%;
-    /* 터치 반응성 개선 */
-    pointer-events: none;
   }
 }
