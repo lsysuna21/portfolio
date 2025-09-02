@@ -7,6 +7,7 @@ class ModalSystem {
     this.modalClose = null;
     this.topButton = null;
     this.fullpageApi = null; // fullpage.js API 참조
+    this.mainTopButton = null; // 메인 .top 버튼 참조
     this.init();
   }
 
@@ -15,6 +16,9 @@ class ModalSystem {
     this.createModalStructure();
     this.bindEvents();
     this.initModalTriggers();
+
+    // 메인 .top 버튼 참조 저장
+    this.mainTopButton = document.querySelector('.top');
   }
 
   createModalStructure() {
@@ -143,20 +147,25 @@ class ModalSystem {
       this.fullpageApi.setKeyboardScrolling(false);
     }
 
+    // 메인 .top 버튼 숨기기
+    if (this.mainTopButton) {
+      this.mainTopButton.style.display = 'none';
+    }
+
     // 벤또롱또똣 프로젝트 확인 (이미지 경로로 판단)
-  const isBentoProject = imageSrc.includes('bentto.jpg');
-  
-  if (isBentoProject && trigger) {
-    // 벤또롱또똣 프로젝트인 경우 버튼들 표시
-    this.showBentoButtons();
-    // 벤또롱또똣 전용 클래스 추가
-    this.modalOverlay.classList.add('bento-modal');
-  } else {
-    // 다른 프로젝트인 경우 버튼들 숨김
-    this.hideBentoButtons();
-    // 벤또롱또똣 전용 클래스 제거
-    this.modalOverlay.classList.remove('bento-modal');
-  }
+    const isBentoProject = imageSrc.includes('bentto. jpg');
+    
+    if (isBentoProject && trigger) {
+      // 벤또롱또똣 프로젝트인 경우 버튼들 표시
+      this.showBentoButtons();
+      // 벤또롱또똣 전용 클래스 추가
+      this.modalOverlay.classList.add('bento-modal');
+    } else {
+      // 다른 프로젝트인 경우 버튼들 숨김
+      this.hideBentoButtons();
+      // 벤또롱또똣 전용 클래스 제거
+      this.modalOverlay.classList.remove('bento-modal');
+    }
     
     // 비디오가 있는 경우 처리
     if (videoSrc) {
@@ -218,6 +227,11 @@ class ModalSystem {
     if (this.fullpageApi) {
       this.fullpageApi.setAllowScrolling(true);
       this.fullpageApi.setKeyboardScrolling(true);
+    }
+
+    // 메인 .top 버튼 다시 보이기
+    if (this.mainTopButton) {
+      this.mainTopButton.style.display = '';
     }
 
     // 모달 닫기
