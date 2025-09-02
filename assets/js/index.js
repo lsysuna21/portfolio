@@ -153,7 +153,7 @@ class ModalSystem {
     }
 
     // 벤또롱또똣 프로젝트 확인 (이미지 경로로 판단)
-    const isBentoProject = imageSrc.includes('bentto. jpg');
+    const isBentoProject = imageSrc.includes('bentto.jpg');
     
     if (isBentoProject && trigger) {
       // 벤또롱또똣 프로젝트인 경우 버튼들 표시
