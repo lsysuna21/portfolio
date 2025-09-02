@@ -2,6 +2,17 @@
   background: linear-gradient(180deg, white 0%, #C8FFFB 100%);
 }
 
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
 .portfolio-bg-img {
   position: absolute;
   width:100vw;
@@ -21,14 +32,7 @@
   z-index: 1;
   animation: fadeOut 2s forwards 3s;
 }
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
+
 
 .intro-text-container{
   position: absolute; 
@@ -44,14 +48,7 @@
   z-index: 2;
   animation: fadeIn 2s forwards 3s;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+
 
 .intro-line.line1::after {
   content: ''; 
