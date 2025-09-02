@@ -193,7 +193,7 @@
   margin: 5rem 25rem 0 10rem;
 }
 #profile .swiper-slide .awards{
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 #profile .swiper-slide .awards .e{
   margin-bottom: 2.5rem;
@@ -230,7 +230,7 @@
 
 
 /* -----맥북에어----- */
-/* @media screen and (min-width: 1201px) and (max-width: 1280px){
+@media screen and (min-width: 1201px) and (max-width: 1280px){
   #profile .swiper-wrapper .profile1{
     padding: 5rem 0rem 0rem 15rem;
   }
@@ -265,11 +265,11 @@
   #profile .swiper-wrapper .profile2 .awards{
     margin-top: 0rem;
     position: absolute;
-    top: 13rem;
+    top: 9rem;
     right: 10vw;
   }
 
-}  */
+} 
 
 /* -----Tablet----- */
 @media screen and (min-width: 769px) and (max-width: 1200px) {
@@ -379,7 +379,7 @@
   #profile .swiper-slide .awards{
     margin: 0rem;
     position: absolute;
-    top: 2.5rem;
+    top: 5rem;
     right: 7rem;
   }
   #profile .swiper-slide .awards .e{
