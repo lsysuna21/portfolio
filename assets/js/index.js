@@ -494,7 +494,7 @@ const projectsUXUI = [
     detailImage: 'assets/img/uxui/lotte.png'
   },
   {
-    title: '동대문구립도서관',
+    title: '동대문구립 도서관',
     percent: 'Personal 100%',
     stack: ['photo-logo.png'],
     duration: '4H',
@@ -625,6 +625,13 @@ function initUXUISwiper() {
     navigation: {
       nextEl: ".uxui-swiper-button-next",
       prevEl: ".uxui-swiper-button-prev",
+    },
+
+    // 페이지네이션 추가
+    pagination: {
+      el: '.uxui-swiper-pagination',
+      clickable: true,
+      type: 'bullets',
     },
     
     // 슬라이드 변경 시 이벤트

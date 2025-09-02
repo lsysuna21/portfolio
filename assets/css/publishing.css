@@ -220,7 +220,8 @@
   .publishing-container {
     flex-direction: column;
     align-items: left;
-    margin: auto;
+    margin: 4rem auto 0;
+    
   }
 
   #publishing .project-info{
@@ -231,16 +232,16 @@
   #publishing .proinfo-left{
     width: 200px;
   }
-  .project-title{
+  #publishing .project-title{
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
   }
-  .project-desc{
+  #publishing .project-desc{
     font-size: 1.4rem;
     font-weight: 400;
   }
-  .pub-contents{
+  #publishing .pub-contents{
     font-size: 1.4rem;
     position: absolute;
     top: 15rem;

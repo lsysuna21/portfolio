@@ -180,20 +180,41 @@
 }
 
 
+/* 인디케이터 기본 스타일 (데스크탑에서는 숨김) */
+#UXUI .uxui-swiper-pagination {
+  display: none;
+}
 
 /* -----맥북에어----- */
 @media screen and (min-width: 1201px) and (max-width: 1280px){
 
-  #UXUI .uxui-container .uxui-info {
-    margin: 0;
-  }
-
   #UXUI .uxui-swiper img {
-    width: 80%;
-    max-width: 80%;
+    width: 70%;
+    max-width: 500px;
   }
 
-  
+  #UXUI .button-container {
+    position: absolute;
+    top: 56.5rem;
+    left: 50%;
+    margin-top: 0rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .uxui-planning-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: 15rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 }
 
@@ -201,12 +222,123 @@
 
 /* -----Tablet----- */
 @media screen and (min-width: 769px) and (max-width: 1200px) {
-  
+  #UXUI .uxui-container .uxui-info {
+    margin: 1rem 0 0;
+  }
+
+  #UXUI .uxui-swiper img {
+    width: 80%;
+    max-width: 500px;
+  }
+
+  #UXUI .button-container {
+    position: absolute;
+    top: 61.5rem;
+  }
+
+  .uxui-planning-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: 17.5rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
 
 
 /* -----Mobile----- */
 @media (max-width: 768px) {
+
+  #UXUI .uxui-container{
+    margin: -9rem;
+  }
+  #UXUI .uxui-container .uxui-info {
+    margin: 0;
+  }
+  #UXUI .project-title {
+    margin-right: 2rem;
+    font-size: 2.4rem;
+    width: 100px;
+    text-align: center;
+    word-break : keep-all;
+  }
+  #UXUI .stack-icons img{
+    width: 3rem;
+  }
+  #UXUI .uxui-container .uxui-info .pub-contents {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 200px;
+  }
+
+  #UXUI .uxui-swiper{
+    height: 400px;
+  }
+  #UXUI .uxui-swiper .swiper-slide{
+    height: 300px;
+  }
+  #UXUI .uxui-swiper img {
+    width: 40%;
+    margin-left: -4rem;
+  }
+
+  #UXUI .button-container {
+    position: absolute;
+    top: 37rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .uxui-planning-btn.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: 12.5rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #UXUI .uxui-swiper-pagination {
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    margin-left: -1.1rem;
+  }
+  
+  #UXUI .uxui-swiper-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #0D2B98;
+    opacity: 1;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+  }
+  
+  #UXUI .uxui-swiper-pagination .swiper-pagination-bullet-active {
+    background: #0D2B98;
+    transform: scale(1.2);
+  }
 
 }

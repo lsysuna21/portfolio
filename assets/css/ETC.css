@@ -57,20 +57,45 @@
 
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
-  .modal-buttons-container .btn {
-    width: 15rem;
-    height: 4rem;
-    font-size: 1.8rem;
+/* -----맥북에어----- */
+@media screen and (min-width: 1201px) and (max-width: 1280px){
+  .bento-modal .modal-video-overlay.bento-video {
+    width: 65rem; 
   }
-  
+}
+
+/* -----Tablet----- */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+  .bento-modal .modal-video-overlay.bento-video {
+    width: 60rem; 
+  }
   .modal-buttons-container {
+    position: absolute;
+    top: 23%;
+    left: 59%;
     gap: 1rem;
   }
-  
-  .modal-close {
-    top: -30px;
-    right: -20px;
-    font-size: 2.5rem;
+}
+
+/* -----Mobile----- */
+@media (max-width: 768px) {
+  .modal-buttons-container .btn {
+    width: 7rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: 0.5px solid #0D2B98;
+    box-shadow: none;
   }
+  
+  .bento-modal .modal-video-overlay.bento-video {
+    width: 20rem; 
+  }
+  .modal-buttons-container {
+    position: absolute;
+    top: 23%;
+    left: 59%;
+    gap: 0.1rem;
+  }
+  
 }

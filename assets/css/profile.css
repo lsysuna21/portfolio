@@ -532,4 +532,9 @@
     font-size: 1.8rem;
   }
 
+
+  html, body {
+    overflow-x: hidden; /* 가로 스크롤만 차단 */
+    overflow-y: auto;   /* 세로 스크롤 허용 */
+  }
 }
