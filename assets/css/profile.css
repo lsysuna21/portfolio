@@ -181,10 +181,10 @@
 .adobe-xd .progress-fill { --target-width: 90%; animation-delay: 6.5s; }
 .figma .progress-fill { --target-width: 90%; animation-delay: 6.6s; }
 .html .progress-fill { --target-width: 90%; animation-delay: 6.7s; }
-.css .progress-fill { --target-width: 85%; animation-delay: 6.8s; }
-.jquery .progress-fill { --target-width: 50%; animation-delay: 6.9s; }
-.javascript .progress-fill { --target-width: 50%; animation-delay: 7s; }
-.github .progress-fill { --target-width: 80%; animation-delay: 7.1s; }
+/* .css .progress-fill { --target-width: 85%; animation-delay: 6.8s; } */
+.jquery .progress-fill { --target-width: 50%; animation-delay: 6.8s; }
+.javascript .progress-fill { --target-width: 50%; animation-delay: 6.9s; }
+.github .progress-fill { --target-width: 80%; animation-delay: 7s; }
 
 #profile .swiper-slide.profile2{
   display: flex;
