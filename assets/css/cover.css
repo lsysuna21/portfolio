@@ -36,7 +36,7 @@
 
 .intro-text-container{
   position: absolute; 
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   left: 13%;
   width: 55rem;
@@ -70,11 +70,11 @@
   font-size: 80px;
   font-weight: 500;
   color: white;
-  margin-top: 2rem;
+  margin-top: 35rem;
 }
-.intro-line.line2{
+/* .intro-line.line2{
   margin-top: 33rem;
-}
+} */
 
 
 
